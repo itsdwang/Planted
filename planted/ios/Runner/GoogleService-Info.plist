@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>799180814600-fn13j9vf4tli2bvl7j7lbn50bk2a1m4a.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.799180814600-fn13j9vf4tli2bvl7j7lbn50bk2a1m4a</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCqm1SURzf1S0qilESl4C5aBXkWL_sjQIg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>799180814600</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.planted.planted</string>
+	<key>PROJECT_ID</key>
+	<string>planted-8f7a6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>planted-8f7a6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:799180814600:ios:f8a416b8f9db8381f554bd</string>
+	<key>DATABASE_URL</key>
+	<string>https://planted-8f7a6.firebaseio.com</string>
+</dict>
+</plist>
