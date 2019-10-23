@@ -1,38 +1,38 @@
 {
   "project_info": {
-    "project_number": "799180814600",
-    "firebase_url": "https://planted-8f7a6.firebaseio.com",
-    "project_id": "planted-8f7a6",
-    "storage_bucket": "planted-8f7a6.appspot.com"
+    "project_number": "710300926636",
+    "firebase_url": "https://planted-d9388.firebaseio.com",
+    "project_id": "planted-d9388",
+    "storage_bucket": "planted-d9388.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:799180814600:android:cefb63b33526d2b4f554bd",
+        "mobilesdk_app_id": "1:710300926636:android:fdb1c28f2e801a5885d509",
         "android_client_info": {
           "package_name": "com.planted.planted"
         }
       },
       "oauth_client": [
         {
-          "client_id": "799180814600-lcfcfn98u4dl77eh5cpqltno1t2q1khp.apps.googleusercontent.com",
+          "client_id": "710300926636-ecvocrupgqqgn7pm20khrmbd292dvufk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBT5JHf0kYXjo3DKo3kAibapZTFHncI9ZE"
+          "current_key": "AIzaSyDEULGx-ug6UiU28G97quVpboQZbWqgowg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "799180814600-lcfcfn98u4dl77eh5cpqltno1t2q1khp.apps.googleusercontent.com",
+              "client_id": "710300926636-ecvocrupgqqgn7pm20khrmbd292dvufk.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "799180814600-fn13j9vf4tli2bvl7j7lbn50bk2a1m4a.apps.googleusercontent.com",
+              "client_id": "710300926636-nqnu28nubdt60go5n8jdlkevr88ii7kk.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.planted.planted"
