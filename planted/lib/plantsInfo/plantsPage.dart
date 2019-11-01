@@ -30,7 +30,6 @@ class _PlantsPageState extends State<PlantsPage> {
   Widget build(BuildContext context) {
     Future getImage() async {
       var temp = await ImagePicker.pickImage(source: ImageSource.gallery);
-      print("you selected img frm gallery");
       setState(() {
         plantImage = temp;
       });
@@ -109,7 +108,6 @@ class _PlantsPageState extends State<PlantsPage> {
                                   if (plantImage == null) {
                                     print('Select an Image');
                                   } else {
-                                    print('wooopwoooop :)');
                                     enableUpload(context);
                                   }
                                 },
