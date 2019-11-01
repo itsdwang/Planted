@@ -29,7 +29,7 @@ class _PlantsPageState extends State<PlantsPage> {
   @override
   Widget build(BuildContext context) {
     Future getImage() async {
-      var temp = await ImagePicker.pickImage(source: ImageSource.gallery);
+      var temp = await ImagePicker.pickImage(source: ImageSource.camera);
       setState(() {
         plantImage = temp;
       });
