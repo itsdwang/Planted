@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:path/path.dart';
-import 'package:image_picker/image_picker.dart';  //Image plugin
+import 'package:image_picker/image_picker.dart'; //Image plugin
 import 'dart:async';
 import 'dart:io';
-
 
 class PlantsPage extends StatefulWidget {
   _PlantsPageState createState() => _PlantsPageState();
 }
 
-
 class _PlantsPageState extends State<PlantsPage> {
   final _formKey = GlobalKey<FormState>();
   File plantImage;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final DatabaseReference databaseReference =
+      FirebaseDatabase.instance.reference();
+
+  final nameController = new TextEditingController();
+  final lightRequirementController = new TextEditingController();
+  final speciesController = new TextEditingController();
 
   Widget displaySelectedFile(File file) {
     return new SizedBox(
       height: 200.0,
       width: 300.0,
       child: file == null
-          ? new Text('No image selected!!', textAlign:TextAlign.center)
+          ? new Text('No image selected!!', textAlign: TextAlign.center)
           : new Image.file(file),
-
     );
   }
 
@@ -35,15 +41,36 @@ class _PlantsPageState extends State<PlantsPage> {
       });
     }
 
-    Future enableUpload(BuildContext context) async {
-      String filename = basename(plantImage.path);
-      StorageReference firebaseStorageRef =
-      FirebaseStorage.instance.ref().child(filename);
-      StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
-      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-      setState(() {
-        print("plant img uploaded");
-      });
+    // Future enableUpload(BuildContext context) async {
+    //   String filename = basename(plantImage.path);
+    //   StorageReference firebaseStorageRef =
+    //       FirebaseStorage.instance.ref().child(filename);
+    //   StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
+    //   StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+    //   setState(() {
+    //     print("plant img uploaded");
+    //   });
+    // }
+
+    Future saveToDatabase(BuildContext context) async {
+      final currentUser = await _firebaseAuth.currentUser();
+      if (_formKey.currentState.validate()) {
+        String filename = basename(plantImage.path);
+        StorageReference firebaseStorageRef =
+            FirebaseStorage.instance.ref().child(filename);
+        StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
+        StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+        setState(() {
+          print("plant img uploaded");
+        });
+        await databaseReference.child("plants").set({
+          'uid': currentUser.uid,
+          'plantName': nameController.text,
+          'speciesName': speciesController.text,
+          'lightRequirement': lightRequirementController.text,
+          'imageUrl': taskSnapshot.ref.getDownloadURL().toString()
+        });
+      }
     }
 
     return Scaffold(
@@ -51,6 +78,7 @@ class _PlantsPageState extends State<PlantsPage> {
         title: Text("Home"),
       ),
       body: new ListView(
+        shrinkWrap: true,
         //Center(
         padding: const EdgeInsets.all(8),
         children: <Widget>[
@@ -69,33 +97,48 @@ class _PlantsPageState extends State<PlantsPage> {
                     return AlertDialog(
                       content: Form(
                         key: _formKey,
-                        child: ListView(
-                          padding: const EdgeInsets.all(8),
-                          //mainAxisSize: MainAxisSize.min,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: TextFormField(
-                                decoration: InputDecoration(
-                                    labelText: 'Name:'
-                                ),
+                                controller: nameController,
+                                decoration: InputDecoration(labelText: 'Name:'),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter a name for this Plant';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: TextFormField(
-                                  decoration: InputDecoration(
-                                      labelText: 'Species'
-                                  )
+                                controller: speciesController,
+                                decoration:
+                                    InputDecoration(labelText: 'Species'),
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter a name for this Plant';
+                                  }
+                                  return null;
+                                },
                               ),
                             ),
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: TextFormField(
+                                  controller: lightRequirementController,
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return 'Please enter a name for this Plant';
+                                    }
+                                    return null;
+                                  },
                                   decoration: InputDecoration(
-                                      labelText: 'Light Requirement'
-                                  )
-                              ),
+                                      labelText: 'Light Requirement')),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -108,7 +151,8 @@ class _PlantsPageState extends State<PlantsPage> {
                                   if (plantImage == null) {
                                     print('Select an Image');
                                   } else {
-                                    enableUpload(context);
+                                    // enableUpload(context);
+                                    saveToDatabase(context);
                                   }
                                 },
                               ),
@@ -126,4 +170,3 @@ class _PlantsPageState extends State<PlantsPage> {
     );
   }
 }
-
