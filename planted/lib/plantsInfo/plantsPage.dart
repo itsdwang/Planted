@@ -167,6 +167,29 @@ class _PlantsPageState extends State<PlantsPage> {
           ),
         ],
       ),
+        // This is code that would build a bottom nav-bar. I copied and pasted
+        // from this link:
+        // https://medium.com/flutterpub/flutter-6-bottom-navigation-38b202d9ca23
+
+        bottomNavigationBar:BottomNavigationBar(
+          // .shifting means that
+          type: BottomNavigationBarType.shifting ,
+          backgroundColor: Color.fromARGB(255, 38, 196, 133),
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.ac_unit,color: Color.fromARGB(255, 38, 196, 133)),
+                title: new Text('')
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.ac_unit,color: Color.fromARGB(255, 0, 0, 0)),
+                title: new Text('')
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.access_alarm,color: Color.fromARGB(255, 0, 0, 0)),
+                title: new Text('')
+            )
+          ],
+        )
     );
   }
 }
