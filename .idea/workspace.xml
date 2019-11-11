@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="958c83b7-710e-4657-8511-3711274c5b23" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Planted.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Planted.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planted/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/planted/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planted/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/planted/ios/Flutter/Release.xcconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/planted/lib/login/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/planted/lib/login/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planted/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/planted/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planted/lib/plantsInfo/plantsPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/planted/lib/plantsInfo/plantsPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planted/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/planted/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +16,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5_API_29" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/planted/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+            <state relative-caret-position="1382">
+              <caret line="138" column="16" lean-forward="true" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -44,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/planted/lib/login/login.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="833">
+              <caret line="110" column="53" lean-forward="true" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -85,8 +78,14 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Eduardo Villa" />
+      </list>
+    </option>
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -125,6 +124,11 @@
             <path>
               <item name="Planted" type="b2602c69:ProjectViewProjectNode" />
               <item name="Planted" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Planted" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Planted" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Planted" type="b2602c69:ProjectViewProjectNode" />
@@ -220,6 +224,14 @@
       <option name="presentableId" value="Default" />
       <updated>1571687854468</updated>
     </task>
+    <task id="LOCAL-00001" summary="I added some dependencies for logos and other things.&#10;&#10;I also added a splash page that leads to login. Nothing else was finished at this time.">
+      <created>1573235348294</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573235348294</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -236,7 +248,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26111636" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26111636" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -248,17 +260,22 @@
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.3299363" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="4" weight="0.3299363" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.23184714" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.23184714" />
       <window_info anchor="bottom" id="Debug" order="6" />
       <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.3299363" />
+      <window_info anchor="bottom" id="Messages" order="9" visible="true" weight="0.3299363" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info anchor="right" id="Flutter Inspector" order="3" />
       <window_info anchor="right" id="Flutter Outline" order="4" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="I added some dependencies for logos and other things.&#10;&#10;I also added a splash page that leads to login. Nothing else was finished at this time." />
+    <option name="LAST_COMMIT_MESSAGE" value="I added some dependencies for logos and other things.&#10;&#10;I also added a splash page that leads to login. Nothing else was finished at this time." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/planted/pubspec.lock">
@@ -278,8 +295,8 @@
     <entry file="file://$PROJECT_DIR$/assests/images/green-pattern.gif" />
     <entry file="file://$PROJECT_DIR$/planted/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+        <state relative-caret-position="1382">
+          <caret line="138" column="16" lean-forward="true" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
@@ -290,16 +307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/planted/lib/login/login.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -316,6 +323,16 @@
           <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#1051#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/planted/lib/login/login.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="110" column="53" lean-forward="true" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
