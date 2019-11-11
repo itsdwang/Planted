@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(70.0, 0, 30.0, 0),
                       child: new RaisedButton(
-                        child: new Text("LogIn"),
+                        child: new Text("Login"),
                         color: Colors.red[600],
                         onPressed: loginToAccount,
                       ),
@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(50.0, 0, 30.0, 0),
                       child: new RaisedButton(
-                        child: new Text("SignUp"),
+                        child: new Text("Sign Up"),
                         color: Colors.blueAccent[600],
                         onPressed: signUpAndRegister,
                       ),
