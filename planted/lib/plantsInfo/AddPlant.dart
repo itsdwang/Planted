@@ -16,7 +16,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
   File plantImage;
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference databaseReference =
-  FirebaseDatabase.instance.reference();
+      FirebaseDatabase.instance.reference();
 
   final nameController = new TextEditingController();
   final lightRequirementController = new TextEditingController();
@@ -46,7 +46,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
       if (_formKey.currentState.validate()) {
         String filename = basename(plantImage.path);
         StorageReference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child(filename);
+            FirebaseStorage.instance.ref().child(filename);
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
         StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
         setState(() {
@@ -63,12 +63,9 @@ class _AddPlantPageState extends State<AddPlantPage> {
     }
 
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
-
-        body: new ListView(
+      resizeToAvoidBottomPadding: false,
+      body: new ListView(
         shrinkWrap: true,
-        //Center(
-        // padding: const EdgeInsets.all(8),
         children: <Widget>[
           displaySelectedFile(plantImage),
           new RaisedButton(
@@ -88,62 +85,49 @@ class _AddPlantPageState extends State<AddPlantPage> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: TextFormField(
-                                controller: nameController,
-                                decoration: InputDecoration(labelText: 'Name:'),
+                            TextFormField(
+                              controller: nameController,
+                              decoration: InputDecoration(labelText: 'Name:'),
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Please enter a name';
+                                }
+                                return null;
+                              },
+                            ),
+                            TextFormField(
+                              controller: speciesController,
+                              decoration: InputDecoration(labelText: 'Species'),
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Please enter a species';
+                                }
+                                return null;
+                              },
+                            ),
+                            TextFormField(
+                                controller: lightRequirementController,
                                 validator: (value) {
                                   if (value.isEmpty) {
-                                    return 'Please enter a name';
+                                    return 'Please enter a light requirement';
                                   }
                                   return null;
                                 },
-                              ),
+                                decoration: InputDecoration(
+                                    labelText: 'Light Requirement')),
+                            RaisedButton(
+                              child: Text("Submit"),
+                              onPressed: () {
+                                if (_formKey.currentState.validate()) {
+                                  _formKey.currentState.save();
+                                }
+                                if (plantImage == null) {
+                                  print('Select an Image');
+                                } else {
+                                  saveToDatabase(context);
+                                }
+                              },
                             ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: TextFormField(
-                                controller: speciesController,
-                                decoration:
-                                    InputDecoration(labelText: 'Species'),
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please enter a species';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: TextFormField(
-                                  controller: lightRequirementController,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Please enter a light requirement';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                      labelText: 'Light Requirement')),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: RaisedButton(
-                                child: Text("Submit"),
-                                onPressed: () {
-                                  if (_formKey.currentState.validate()) {
-                                    _formKey.currentState.save();
-                                  }
-                                  if (plantImage == null) {
-                                    print('Select an Image');
-                                  } else {
-                                    saveToDatabase(context);
-                                  }
-                                },
-                              ),
-                            )
                           ],
                         ),
                       ),
