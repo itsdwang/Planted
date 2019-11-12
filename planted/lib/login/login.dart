@@ -46,22 +46,15 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget title = new Container(
     child: Text("Welcome to Planted!!",
-        style: TextStyle(fontSize: 30),
-        textAlign: TextAlign.center),
+        style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
   );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        // I removed the appbar since it's kinda clunky
-//        appBar: AppBar(
-//          title: Text("Login to Planted!"),
-//        ),
         body: Form(
             key: _formKey,
-            child: Wrap(runSpacing: 20, spacing: 20,
-                children: <Widget>[
+            child: Wrap(runSpacing: 20, spacing: 20, children: <Widget>[
               title,
               Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 2.0, 15.0, 2.0),
@@ -114,9 +107,6 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-            ]
-            )
-        )
-    );
+            ])));
   }
 }
