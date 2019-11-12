@@ -121,10 +121,15 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                 if (_formKey.currentState.validate()) {
                                   _formKey.currentState.save();
                                 }
+
                                 if (plantImage == null) {
                                   print('Select an Image');
                                 } else {
                                   saveToDatabase(context);
+
+                                  // Close dialog box
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop('dialog');
                                 }
                               },
                             ),
