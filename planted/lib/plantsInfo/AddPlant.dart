@@ -52,7 +52,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
         setState(() {
           print("Plant image uploaded");
         });
-        await databaseReference.child("plants").set({
+        await databaseReference.child("plants").push().set({
           'uid': currentUser.uid,
           'plantName': nameController.text,
           'speciesName': speciesController.text,
