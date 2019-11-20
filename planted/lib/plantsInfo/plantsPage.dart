@@ -6,6 +6,8 @@ import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart'; //Image plugin
 import 'dart:async';
 import 'dart:io';
+import './seePlantsView.dart';
+// import './trackingPage.dart';
 
 class PlantsPage extends StatefulWidget {
   _PlantsPageState createState() => _PlantsPageState();
@@ -63,7 +65,7 @@ class _PlantsPageState extends State<PlantsPage> {
         setState(() {
           print("plant img uploaded");
         });
-        await databaseReference.child("plants").set({
+        await databaseReference.child("plants").push().set({
           'uid': currentUser.uid,
           'plantName': nameController.text,
           'speciesName': speciesController.text,
@@ -71,6 +73,11 @@ class _PlantsPageState extends State<PlantsPage> {
           'imageUrl': taskSnapshot.ref.getDownloadURL().toString()
         });
       }
+    }
+
+    void navigateToMyPlants() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => SeePlants()));
     }
 
     return Scaffold(
@@ -127,19 +134,64 @@ class _PlantsPageState extends State<PlantsPage> {
                                 },
                               ),
                             ),
+                            // Padding(
+                            //   padding: EdgeInsets.all(8.0),
+                            //   child: TextFormField(
+                            //       controller: lightRequirementController,
+                            //       validator: (value) {
+                            //         if (value.isEmpty) {
+                            //           return 'Please enter a name for this Plant';
+                            //         }
+                            //         return null;
+                            //       },
+                            //       decoration: InputDecoration(
+                            //           labelText: 'Light Requirement')),
+                            // ),
+                            // Padding(
+                            //     padding: EdgeInsets.all(8.0),
+                            //     child: Row(
+                            //       children: <Widget>[
+                            //         RadioListTile(title: const Text("Low")),
+                            //         RadioListTile(title: const Text("Medium")),
+                            //         RadioListTile(title: const Text("High"))
+                            //       ],
+                            //     )),
                             Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: TextFormField(
-                                  controller: lightRequirementController,
-                                  validator: (value) {
-                                    if (value.isEmpty) {
-                                      return 'Please enter a name for this Plant';
-                                    }
-                                    return null;
-                                  },
-                                  decoration: InputDecoration(
-                                      labelText: 'Light Requirement')),
-                            ),
+                                padding: EdgeInsets.all(4.0),
+                                child: new Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    new Radio(
+                                      value: 0,
+                                      // groupValue: _radioValue1,
+                                      // onChanged: _handleRadioValueChange1,
+                                    ),
+                                    new Text(
+                                      'Low',
+                                      style: new TextStyle(fontSize: 16.0),
+                                    ),
+                                    new Radio(
+                                      value: 1,
+                                      // groupValue: _radioValue1,
+                                      // onChanged: _handleRadioValueChange1,
+                                    ),
+                                    new Text(
+                                      'Medium',
+                                      style: new TextStyle(
+                                        fontSize: 16.0,
+                                      ),
+                                    ),
+                                    new Radio(
+                                      value: 2,
+                                      // groupValue: _radioValue1,
+                                      // onChanged: _handleRadioValueChange1,
+                                    ),
+                                    new Text(
+                                      'High',
+                                      style: new TextStyle(fontSize: 16.0),
+                                    ),
+                                  ],
+                                )),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: RaisedButton(
@@ -165,6 +217,11 @@ class _PlantsPageState extends State<PlantsPage> {
             },
             child: Text("Add a Plant"),
           ),
+          new RaisedButton(
+              child: Text("See all of my plants"),
+              onPressed: () {
+                navigateToMyPlants();
+              })
         ],
       ),
     );
