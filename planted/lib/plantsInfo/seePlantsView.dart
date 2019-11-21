@@ -42,10 +42,47 @@ class SeePlantsState extends State<SeePlants> {
         body: new ListView.builder(
             itemCount: _plants.length,
             itemBuilder: (context, index) {
-              return new ListTile(
-                title: new Text('Plant Name:   ' + _plants[index].plantName),
-                subtitle:
-                    new Text('species Name:   ' + _plants[index].speciesName),
+              return new Card(
+                elevation: 5,
+                child: Container(
+                  height: 70.0,
+                  child: Row(children: <Widget>[
+                    Container(
+                      height: 70.0,
+                      width: 70.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(5),
+                              topLeft: Radius.circular(5)),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  "https://www.burpee.com/dw/image/v2/ABAQ_PRD/on/demandware.static/-/Sites-masterCatalog_Burpee/default/dw07e89459/Images/Product%20Images/prod500323/prod500323.jpg?sw=265&sh=312&sm=fit"))),
+                    ),
+                    Container(
+                        height: 100,
+                        child:
+                            // Text('Plant Name:    ' + _plants[index].plantName))
+                            Center(
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text('Plant Name:    ' +
+                                      _plants[index].plantName),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(9),
+                                  child: Text('Species Name:   ' +
+                                      _plants[index].speciesName),
+                                )
+                              ],
+                            ),
+                          ),
+                        )),
+                  ]),
+                ),
               );
             }));
   }
