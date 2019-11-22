@@ -4,6 +4,7 @@ import 'AddPlant.dart';
 import '../Reminders.dart';
 import '../login/Account.dart';
 import './seePlantsView.dart';
+import './addReminders.dart';
 
 class PlantsPage extends StatefulWidget {
   _PlantsPageState createState() => _PlantsPageState();
@@ -15,7 +16,7 @@ class _PlantsPageState extends State<PlantsPage> {
     AccountPage(),
     AddPlantPage(),
     RemindersPage(),
-    SeePlants()
+    SeePlants(),
   ];
 
   @override
