@@ -90,7 +90,6 @@ class _AddPlantPageState extends State<AddPlantPage> {
                               decoration: InputDecoration(labelText: 'Name:'),
                               validator: (value) {
                                 if (value.isEmpty) {
-                                  print("empty");
                                   return 'Please enter a name';
                                 }
                                 return null;

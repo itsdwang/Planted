@@ -33,10 +33,12 @@ class SeePlantsState extends State<SeePlants> {
     return uid;
   }
 
-  navigateToRemindersPage() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => AddRemindersPage()));
-  }
+  // navigateToRemindersPage(plant) {
+  //   Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //           builder: (context) => AddRemindersPage(plant: plant)));
+  // }
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -49,7 +51,13 @@ class SeePlantsState extends State<SeePlants> {
             itemCount: _plants.length,
             itemBuilder: (context, index) {
               return new GestureDetector(
-                  onTap: navigateToRemindersPage,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                AddRemindersPage(plant: _plants[index])));
+                  },
                   child: Card(
                       elevation: 5,
                       child: Container(

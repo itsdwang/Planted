@@ -5,7 +5,8 @@ class Plant {
   String lightRequirement;
   String image;
 
-  Plant(plantName, speciesName, lightRequirement, image) {
+  Plant(key, plantName, speciesName, lightRequirement, image) {
+    this.key = key;
     this.plantName = plantName;
     this.speciesName = speciesName;
     this.lightRequirement = lightRequirement;

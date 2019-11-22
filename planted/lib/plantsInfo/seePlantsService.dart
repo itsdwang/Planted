@@ -11,6 +11,7 @@ class SeePlantsService {
     final FirebaseUser user = await _firebaseAuth.currentUser();
     var plantslist = [];
 
+    // TO DO: FILTER OUT PLANTS THAT DONT BELONG TO USER....add check for uid in loop = currentuser.uid
     final db = FirebaseDatabase.instance.reference().child("plants");
     List<Plant> plants = new List<Plant>();
     return FirebaseDatabase.instance
@@ -20,7 +21,8 @@ class SeePlantsService {
         .then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, value) {
-        Plant plant = new Plant(value['plantName'], value['speciesName'],
+        print(key);
+        Plant plant = new Plant(key, value['plantName'], value['speciesName'],
             value['lightRequirement'], value['image']);
         print(plant.plantName);
         plants.add(plant);
