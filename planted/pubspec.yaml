@@ -34,6 +34,7 @@ dependencies:
   # cloud_firestore: ^0.12.9+5
   firebase_database: ^3.0.7
   firebase_storage: ^3.0.6
+  datetime_picker_formfield: ^0.1.8
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,26 +48,25 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   assets:
-  - assets/images/green-pattern.gif
-  - assets/images/planted_light.png
-  - assets/images/green-pattern.png
+    - assets/images/green-pattern.gif
+    - assets/images/planted_light.png
+    - assets/images/green-pattern.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
 
   fonts:
-  - family: Umba
-    fonts:
-    - asset:  assets/fonts/UmbaSlab-Bold.otf
-  - family: Lora
-    fonts:
-    - asset:  assets/fonts/Lora-Regular.ttf
-      weight: 500
-    - asset:  assets/fonts/Lora-Bold.ttf
-      weight: 800
+    - family: Umba
+      fonts:
+        - asset: assets/fonts/UmbaSlab-Bold.otf
+    - family: Lora
+      fonts:
+        - asset: assets/fonts/Lora-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Lora-Bold.ttf
+          weight: 800
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
