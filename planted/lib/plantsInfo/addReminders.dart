@@ -4,6 +4,8 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:planted/plantsInfo/plants.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import './reminder.dart';
+import './remindersService.dart';
 
 //only login page for now
 
@@ -24,6 +26,21 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   final reminderNameController = new TextEditingController();
   var reminderDate;
   var reminderTime;
+  List<Reminder> currentReminders = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getRemindersForPlant(widget.plant.key);
+  }
+
+  _getRemindersForPlant(plantKey) async {
+    List<Reminder> allReminders = await RemindersService.getReminders();
+    for (int i = 0; i < allReminders.length; i++) {
+      print(allReminders[i].plantKey);
+      print(allReminders.length);
+    }
+  }
 
   submitReminderForm() async {
     if (_addReminderKey.currentState.validate()) {
