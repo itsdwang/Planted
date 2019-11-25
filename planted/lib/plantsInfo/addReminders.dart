@@ -40,6 +40,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     for (int i = 0; i < allReminders.length; i++) {
       if (allReminders[i].plantKey == widget.plant.key) {
         filterReminders.add(allReminders[i]);
+        print(allReminders[i].isTurnedOn);
         // print(allReminders.length);
       }
     }
@@ -58,6 +59,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         'reminderName': reminderNameController.text,
         'reminderDate': reminderDate.toString(),
         'reminderTime': reminderTime.toString(),
+        'isTurnedOn': false
       });
       // Navigator.of(context, rootNavigator: true).pop('dialog');
     }
@@ -149,8 +151,16 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                 children: <Widget>[
                   Container(
                     child: SwitchListTile(
-                      value: currentReminders[index].isTurnedOn,
-                      onChanged: null,
+                      value: currentReminders[index].isTurnedOn ? true : false,
+                      onChanged: (value) {
+                        FirebaseDatabase.instance
+                            .reference()
+                            .child("reminders")
+                            .child(currentReminders[index].key)
+                            .update({'isTurnedOn': value});
+                        print(value);
+                        currentReminders[index].setTurnedOnValue(value);
+                      },
                       title: new Text(currentReminders[index]
                           .reminderDate
                           .substring(0, 10)),
