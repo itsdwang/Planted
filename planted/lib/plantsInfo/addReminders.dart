@@ -36,16 +36,21 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
 
   _getRemindersForPlant(plantKey) async {
     List<Reminder> allReminders = await RemindersService.getReminders();
+    List<Reminder> filterReminders = [];
     for (int i = 0; i < allReminders.length; i++) {
-      print(allReminders[i].plantKey);
-      print(allReminders.length);
+      if (allReminders[i].plantKey == widget.plant.key) {
+        filterReminders.add(allReminders[i]);
+        // print(allReminders.length);
+      }
     }
+    setState(() {
+      currentReminders = filterReminders;
+    });
   }
 
   submitReminderForm() async {
     if (_addReminderKey.currentState.validate()) {
       _addReminderKey.currentState.save();
-      print("save");
       final currentUser = await _firebaseAuth.currentUser();
       await databaseReference.child("reminders").push().set({
         'uid': currentUser.uid,
@@ -56,14 +61,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
       });
       // Navigator.of(context, rootNavigator: true).pop('dialog');
     }
-    /* save information to DB
-      {
-        key: plant.key
-        name: reminderName
-        Date: 
-        timeStart: time 
-      }
-    */
     Navigator.of(context, rootNavigator: true).pop('dialog');
   }
 
@@ -127,12 +124,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                       onPressed: submitReminderForm,
                       child: Text("Submit"),
                     )
-                    // onChanged: (dt) {
-                    //   setState(() => date3 = dt);
-                    //   print('Selected date: $date3');
-                    //   print('Hour: $date3.hour');
-                    //   print('Minute: $date3.minute');
-                    // },
                   ],
                 ),
               ),
@@ -146,11 +137,31 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Add Reminders to Your Plant!"),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.add), onPressed: showReminderForm)
+          ],
         ),
-        body: new RaisedButton(
-          onPressed: showReminderForm,
-          color: Colors.green,
-          child: Text("Add Reminder for Plant!"),
+        body: new ListView.builder(
+          itemCount: currentReminders.length,
+          itemBuilder: (context, index) {
+            return new Card(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    child: SwitchListTile(
+                      value: currentReminders[index].isTurnedOn,
+                      onChanged: null,
+                      title: new Text(currentReminders[index]
+                          .reminderDate
+                          .substring(0, 10)),
+                      subtitle: new Text(currentReminders[index].reminderTime),
+                    ),
+                    color: Colors.lightGreen,
+                  )
+                ],
+              ),
+            );
+          },
         ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Color.fromARGB(255, 38, 196, 133),
