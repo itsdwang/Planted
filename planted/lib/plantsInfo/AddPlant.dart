@@ -47,8 +47,12 @@ class _AddPlantPageState extends State<AddPlantPage> {
         String filename = basename(plantImage.path);
         StorageReference firebaseStorageRef =
             FirebaseStorage.instance.ref().child(filename);
+        print('Image File Name: ' + filename);
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
         StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+
+        print('Task Snapshot URL: ' + taskSnapshot.ref.getDownloadURL().toString());
+
         setState(() {
           print("Plant image uploaded");
         });
@@ -57,7 +61,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
           'plantName': nameController.text,
           'speciesName': speciesController.text,
           'lightRequirement': lightRequirementController.text,
-          'imageUrl': taskSnapshot.ref.getDownloadURL().toString()
+          'imageUrl': filename
         });
       }
     }
