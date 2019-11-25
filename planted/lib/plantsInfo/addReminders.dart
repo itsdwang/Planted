@@ -59,7 +59,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         'reminderName': reminderNameController.text,
         'reminderDate': reminderDate.toString(),
         'reminderTime': reminderTime.toString(),
-        'isTurnedOn': false
+        'isTurnedOn': true
       });
       // Navigator.of(context, rootNavigator: true).pop('dialog');
     }
