@@ -23,7 +23,8 @@ class RemindersService {
             value['plantKey'],
             value['reminderName'],
             value['reminderDate'],
-            value['reminderTime']);
+            value['reminderTime'],
+            value['isTurnedOn']);
         // print(reminderList.plantName);
         reminderList.add(reminder);
       });
