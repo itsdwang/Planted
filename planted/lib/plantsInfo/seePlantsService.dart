@@ -23,11 +23,11 @@ class SeePlantsService {
       values.forEach((key, value) {
         print(key);
         Plant plant = new Plant(key, value['plantName'], value['speciesName'],
-            value['lightRequirement'], value['image']);
+            value['lightRequirement'], value['imageUrl']);
         print(plant.plantName);
         plants.add(plant);
       });
-      print(plants[0].plantName);
+
       return plants;
     });
   }
