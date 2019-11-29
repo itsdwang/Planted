@@ -98,12 +98,14 @@ class SeePlantsState extends State<SeePlants> {
                                   ),
                                 ),
                               )),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: new IconButton(
-                                  icon: Icon(Icons.remove_circle),
-                                  onPressed: () =>
-                                      removePlant(_plants[index].key, index)))
+                          new Expanded(
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: new IconButton(
+                                    icon: Icon(Icons.remove_circle),
+                                    onPressed: () => removePlant(
+                                        _plants[index].key, index))),
+                          )
                         ]),
                       )));
             }));
