@@ -191,7 +191,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                         currentReminders[index].reminderTime)),
                   ),
                   color: Colors.lightGreen,
-                )
+                ),
               ],
             ),
           );

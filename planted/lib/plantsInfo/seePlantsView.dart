@@ -32,7 +32,7 @@ class SeePlantsState extends State<SeePlants> {
     return uid;
   }
 
-  removePlant(String plantKey, int index) async {
+  deletePlant(String plantKey, int index) async {
     await SeePlantsService.deletePlant(plantKey);
 
     setState(() {
@@ -103,7 +103,7 @@ class SeePlantsState extends State<SeePlants> {
                                 alignment: Alignment.centerRight,
                                 child: new IconButton(
                                     icon: Icon(Icons.remove_circle),
-                                    onPressed: () => removePlant(
+                                    onPressed: () => deletePlant(
                                         _plants[index].key, index))),
                           )
                         ]),

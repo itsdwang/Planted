@@ -6,8 +6,6 @@ import './reminder.dart';
 
 class RemindersService {
   static Future<List<Reminder>> getReminders() async {
-    // final _firebaseAuth = FirebaseAuth.instance;
-
     List<Reminder> reminderList = new List<Reminder>();
 
     //filter out for current User ID
@@ -34,8 +32,16 @@ class RemindersService {
           reminderList.add(reminder);
         }
       });
-      // print(plants[0].plantName);
+
       return reminderList;
     });
+  }
+
+  static Future<void> deleteReminder(String reminderKey) async {
+    FirebaseDatabase.instance
+        .reference()
+        .child("reminders")
+        .child(reminderKey)
+        .remove();
   }
 }
