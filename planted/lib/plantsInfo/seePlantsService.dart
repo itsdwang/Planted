@@ -22,12 +22,14 @@ class SeePlantsService {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, value) {
         print(key);
-        Plant plant = new Plant(key, value['plantName'], value['speciesName'],
-            value['lightRequirement'], value['image']);
-        print(plant.plantName);
-        plants.add(plant);
+        if(user.uid == value["uid"]) {
+          Plant plant = new Plant(key, value['plantName'], value['speciesName'],
+              value['lightRequirement'], value['imageUrl']);
+          print(plant.plantName);
+          plants.add(plant);
+        }
       });
-      print(plants[0].plantName);
+
       return plants;
     });
   }

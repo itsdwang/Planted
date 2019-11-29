@@ -42,10 +42,6 @@ class SeePlantsState extends State<SeePlants> {
 
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: AppBar(
-          title: Text("Track a plant to your Planted Profile!"),
-          backgroundColor: Colors.lightGreen,
-        ),
         backgroundColor: Colors.green,
         body: new ListView.builder(
             itemCount: _plants.length,
