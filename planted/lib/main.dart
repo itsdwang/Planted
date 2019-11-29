@@ -102,16 +102,7 @@ class MainPage extends StatelessWidget {
                 );
               },
               child: Text(
-                'Login',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            new RaisedButton(
-              onPressed: () {},
-              child: Text(
-                'Register',
+                'Grow',
                 style: TextStyle(
                   fontSize: 20,
                 ),

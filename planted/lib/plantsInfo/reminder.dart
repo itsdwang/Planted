@@ -1,17 +1,19 @@
 class Reminder {
   String key;
   String plantKey;
+  String plantName;
   String uid;
   String reminderName;
   String reminderDate;
   String reminderTime;
   bool isTurnedOn;
 
-  Reminder(
-      key, uid, plantKey, reminderName, reminderDate, reminderTime, value) {
+  Reminder(key, uid, plantKey, plantName, reminderName, reminderDate,
+      reminderTime, value) {
     this.key = key;
     this.uid = uid;
     this.plantKey = plantKey;
+    this.plantName = plantName;
     this.reminderName = reminderName;
     this.reminderDate = reminderDate;
     this.reminderTime = reminderTime;

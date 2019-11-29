@@ -26,11 +26,11 @@ class RemindersService {
               key,
               value['uid'],
               value['plantKey'],
+              value['plantName'],
               value['reminderName'],
               value['reminderDate'],
               value['reminderTime'],
               value['isTurnedOn']);
-          // print(reminderList.plantName);
           reminderList.add(reminder);
         }
       });

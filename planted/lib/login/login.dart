@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
   // Widgets
 
   Widget title = new Container(
-    child: Text("Welcome to Planted!!",
+    child: Text("Welcome to Planted!",
         style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
   );
 
