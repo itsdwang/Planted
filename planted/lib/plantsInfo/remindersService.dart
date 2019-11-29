@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_database/firebase_database.dart';
 import './reminder.dart';
@@ -9,6 +10,10 @@ class RemindersService {
 
     List<Reminder> reminderList = new List<Reminder>();
 
+    //filter out for current User ID
+    final _firebaseAuth = FirebaseAuth.instance;
+    final FirebaseUser user = await _firebaseAuth.currentUser();
+
     return FirebaseDatabase.instance
         .reference()
         .child("reminders")
@@ -16,17 +21,18 @@ class RemindersService {
         .then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, value) {
-        print(key);
-        Reminder reminder = new Reminder(
-            key,
-            value['uid'],
-            value['plantKey'],
-            value['reminderName'],
-            value['reminderDate'],
-            value['reminderTime'],
-            value['isTurnedOn']);
-        // print(reminderList.plantName);
-        reminderList.add(reminder);
+        if (value['uid'] == user.uid) {
+          Reminder reminder = new Reminder(
+              key,
+              value['uid'],
+              value['plantKey'],
+              value['reminderName'],
+              value['reminderDate'],
+              value['reminderTime'],
+              value['isTurnedOn']);
+          // print(reminderList.plantName);
+          reminderList.add(reminder);
+        }
       });
       // print(plants[0].plantName);
       return reminderList;
