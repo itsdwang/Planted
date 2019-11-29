@@ -11,7 +11,9 @@ import './remindersService.dart';
 
 class AddRemindersPage extends StatefulWidget {
   final Plant plant;
+
   const AddRemindersPage({Key key, this.plant}) : super(key: key);
+
   _AddRemindersPageState createState() => _AddRemindersPageState();
 }
 
@@ -71,7 +73,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Set new Reminder to water Plant!'),
+            title: Text('Add a new watering reminder'),
             content: Form(
               key: _addReminderKey,
               child: Container(
@@ -137,60 +139,41 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Add Reminders to Your Plant!"),
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.add), onPressed: showReminderForm)
-          ],
-        ),
-        body: new ListView.builder(
-          itemCount: currentReminders.length,
-          itemBuilder: (context, index) {
-            return new Card(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    child: SwitchListTile(
-                      value: currentReminders[index].isTurnedOn ? true : false,
-                      onChanged: (value) {
-                        FirebaseDatabase.instance
-                            .reference()
-                            .child("reminders")
-                            .child(currentReminders[index].key)
-                            .update({'isTurnedOn': value});
-                        print(value);
-                        currentReminders[index].setTurnedOnValue(value);
-                      },
-                      title: new Text(currentReminders[index]
-                          .reminderDate
-                          .substring(0, 10)),
-                      subtitle: new Text(currentReminders[index].reminderTime),
-                    ),
-                    color: Colors.lightGreen,
-                  )
-                ],
-              ),
-            );
-          },
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color.fromARGB(255, 38, 196, 133),
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_box,
-                    color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Account')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Plants')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.access_alarm,
-                    color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Reminders')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.folder, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('My Plants'))
-          ],
-        ));
+      appBar: AppBar(
+        title: Text("View and add reminders"),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.add), onPressed: showReminderForm)
+        ],
+      ),
+      body: new ListView.builder(
+        itemCount: currentReminders.length,
+        itemBuilder: (context, index) {
+          return new Card(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: SwitchListTile(
+                    value: currentReminders[index].isTurnedOn ? true : false,
+                    onChanged: (value) {
+                      FirebaseDatabase.instance
+                          .reference()
+                          .child("reminders")
+                          .child(currentReminders[index].key)
+                          .update({'isTurnedOn': value});
+                      print(value);
+                      currentReminders[index].setTurnedOnValue(value);
+                    },
+                    title: new Text(
+                        currentReminders[index].reminderDate.substring(0, 10)),
+                    subtitle: new Text(currentReminders[index].reminderTime),
+                  ),
+                  color: Colors.lightGreen,
+                )
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
