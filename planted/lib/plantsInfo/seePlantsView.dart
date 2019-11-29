@@ -24,7 +24,6 @@ class SeePlantsState extends State<SeePlants> {
     setState(() {
       _plants = plantslist;
     });
-    print(_plants[0]);
   }
 
   getCurrentUser() async {
