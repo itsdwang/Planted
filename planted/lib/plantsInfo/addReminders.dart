@@ -41,6 +41,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     List<Reminder> filterReminders = [];
     for (int i = 0; i < allReminders.length; i++) {
       if (allReminders[i].plantKey == widget.plant.key) {
+        print('plant name is...' + widget.plant.plantName);
         filterReminders.add(allReminders[i]);
         print(allReminders[i].isTurnedOn);
         // print(allReminders.length);
@@ -58,15 +59,29 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
       await databaseReference.child("reminders").push().set({
         'uid': currentUser.uid,
         'plantKey': widget.plant.key,
+        'plantName': widget.plant.plantName,
         'reminderName': reminderNameController.text,
         'reminderDate': reminderDate.toString(),
         'reminderTime': reminderTime.toString(),
         'isTurnedOn': true
       });
-      // Navigator.of(context, rootNavigator: true).pop('dialog');
     }
     Navigator.of(context, rootNavigator: true).pop('dialog');
     _getRemindersForPlant(widget.plant.key);
+  }
+
+  getHumanReadableDate(String date) {
+    DateTime reminderDate = DateTime.parse(date);
+    String formattedDate = DateFormat('yMMMMd').format(reminderDate);
+
+    return formattedDate;
+  }
+
+  getHumanReadableTime(String time) {
+    DateTime reminderTime = DateTime.parse(time);
+    String formattedTime = DateFormat('jm').format(reminderTime);
+
+    return formattedTime;
   }
 
   showReminderForm() {
@@ -89,6 +104,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                             print("empty");
                             return "Please enter a Date";
                           }
+
                           return null;
                         }),
                     DateTimePickerFormField(
@@ -164,9 +180,10 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                       print(value);
                       currentReminders[index].setTurnedOnValue(value);
                     },
-                    title: new Text(
-                        currentReminders[index].reminderDate.substring(0, 10)),
-                    subtitle: new Text(currentReminders[index].reminderTime),
+                    title: new Text(getHumanReadableDate(
+                        currentReminders[index].reminderDate.substring(0, 10))),
+                    subtitle: new Text(getHumanReadableTime(
+                        currentReminders[index].reminderTime)),
                   ),
                   color: Colors.lightGreen,
                 )

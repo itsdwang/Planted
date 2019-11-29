@@ -63,28 +63,34 @@ class RemindersPageState extends State<RemindersPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.all(8),
+                            padding: EdgeInsets.all(5),
                             child: Text(
                               _reminders[index].reminderName,
                               style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                                  fontSize: 19, fontWeight: FontWeight.bold),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8),
+                            padding: EdgeInsets.all(5),
+                            child: Text(
+                                'Plant Name: ' + _reminders[index].plantName,
+                                style: TextStyle(fontSize: 15)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(4),
                             child: Text(
                                 'Date: ' +
                                     getHumanReadableDate(
                                         _reminders[index].reminderDate),
-                                style: TextStyle(fontSize: 16)),
+                                style: TextStyle(fontSize: 15)),
                           ),
                           Padding(
-                            padding: EdgeInsets.all(8),
+                            padding: EdgeInsets.all(4),
                             child: Text(
                                 'Time: ' +
                                     getHumanReadableTime(
                                         _reminders[index].reminderTime),
-                                style: TextStyle(fontSize: 16)),
+                                style: TextStyle(fontSize: 15)),
                           )
                         ],
                       ),
