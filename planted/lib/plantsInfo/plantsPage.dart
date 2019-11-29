@@ -38,15 +38,18 @@ class _PlantsPageState extends State<PlantsPage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.access_alarm,
                     color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Reminders', style: TextStyle(color: Colors.black))),
+                title: new Text('Reminders',
+                    style: TextStyle(color: Colors.black))),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Add Plant', style: TextStyle(color: Colors.black))),
+                icon:
+                    Icon(Icons.add_circle, color: Color.fromARGB(255, 0, 0, 0)),
+                title: new Text('Add Plant',
+                    style: TextStyle(color: Colors.black))),
             BottomNavigationBarItem(
                 icon: Icon(Icons.folder, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('My Plants', style: TextStyle(color: Colors.black)))
+                title: new Text('My Plants',
+                    style: TextStyle(color: Colors.black)))
           ],
-        )
-    );
+        ));
   }
 }
