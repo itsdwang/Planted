@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'AddPlant.dart';
 import '../Reminders.dart';
-import '../login/Account.dart';
 import './seePlantsView.dart';
 import './addReminders.dart';
 
@@ -12,8 +11,8 @@ class PlantsPage extends StatefulWidget {
 
 class _PlantsPageState extends State<PlantsPage> {
   int _selectedPage = 1;
+
   final _pageOptions = [
-    AccountPage(),
     AddPlantPage(),
     RemindersPage(),
     SeePlants(),
@@ -27,12 +26,8 @@ class _PlantsPageState extends State<PlantsPage> {
         ),
         resizeToAvoidBottomPadding: false,
         body: _pageOptions[_selectedPage],
-
-        // This is code that would build a bottom nav-bar. I copied and pasted
-        // from this link:
-        // https://medium.com/flutterpub/flutter-6-bottom-navigation-38b202d9ca23
         bottomNavigationBar: BottomNavigationBar(
-          // backgroundColor: Color.fromARGB(255, 38, 196, 133),
+          backgroundColor: Color.fromARGB(255, 154, 204, 91),
           onTap: (int index) {
             setState(() {
               _selectedPage = index;
@@ -40,20 +35,17 @@ class _PlantsPageState extends State<PlantsPage> {
           },
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.account_box,
-                    color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Account')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Plants')),
+                icon: Icon(Icons.add_circle, color: Color.fromARGB(255, 0, 0, 0)),
+                title: new Text('Add Plant', style: TextStyle(color: Colors.black))),
             BottomNavigationBarItem(
                 icon: Icon(Icons.access_alarm,
                     color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Reminders')),
+                title: new Text('Reminders', style: TextStyle(color: Colors.black))),
             BottomNavigationBarItem(
                 icon: Icon(Icons.folder, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('My Plants'))
+                title: new Text('My Plants', style: TextStyle(color: Colors.black)))
           ],
-        ));
+        )
+    );
   }
 }
