@@ -23,9 +23,14 @@ class RemindersPageState extends State<RemindersPage> {
       if (allReminders[i].isTurnedOn) {
         filterReminders.add(allReminders[i]);
         print(allReminders[i].isTurnedOn);
-        // print(allReminders.length);
       }
     }
+
+    // Sort reminders in ascending order by date and time
+    filterReminders.sort((a, b) {
+      return a.compareTo(b);
+    });
+
     setState(() {
       _reminders = filterReminders;
     });

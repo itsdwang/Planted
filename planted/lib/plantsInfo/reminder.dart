@@ -23,4 +23,14 @@ class Reminder {
   setTurnedOnValue(value) {
     this.isTurnedOn = value;
   }
+
+  compareTo(Reminder b) {
+    if (this.reminderDate.compareTo(b.reminderDate) > 0) {
+      return 1;
+    } else if (this.reminderDate.compareTo(b.reminderDate) < 0) {
+      return -1;
+    } else {
+      return this.reminderTime.compareTo(b.reminderTime);
+    }
+  }
 }

@@ -81,18 +81,19 @@ class SeePlantsState extends State<SeePlants> {
                                     children: <Widget>[
                                       Padding(
                                         padding: EdgeInsets.all(4),
-                                        child: Text('Name: ' +
-                                            _plants[index].plantName),
+                                        child: Text(
+                                            'Name: ' + _plants[index].plantName,
+                                            style: TextStyle(fontSize: 15)),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(4),
                                         child: Text('Species: ' +
-                                            _plants[index].speciesName),
+                                            _plants[index].speciesName, style: TextStyle(fontSize: 15)),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(4),
                                         child: Text('Light Requirement: ' +
-                                            _plants[index].lightRequirement),
+                                            _plants[index].lightRequirement, style: TextStyle(fontSize: 15),),
                                       )
                                     ],
                                   ),

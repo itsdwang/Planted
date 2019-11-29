@@ -28,7 +28,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
       height: 200.0,
       width: 300.0,
       child: file == null
-          ? new Text('No image selected!!', textAlign: TextAlign.center)
+          ? new Text('No image selected!', textAlign: TextAlign.center)
           : new Image.file(file),
     );
   }
