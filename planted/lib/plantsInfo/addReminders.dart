@@ -7,8 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import './reminder.dart';
 import './remindersService.dart';
 
-//only login page for now
-
 class AddRemindersPage extends StatefulWidget {
   final Plant plant;
 
@@ -18,12 +16,9 @@ class AddRemindersPage extends StatefulWidget {
 }
 
 class _AddRemindersPageState extends State<AddRemindersPage> {
-  // need to show reminders for current plant and then add
-  // add form button to add a reminder for plant
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference databaseReference =
       FirebaseDatabase.instance.reference();
-
   final _addReminderKey = GlobalKey<FormState>();
   final reminderNameController = new TextEditingController();
   var reminderDate;
@@ -39,13 +34,13 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   _getRemindersForPlant(plantKey) async {
     List<Reminder> allReminders = await RemindersService.getReminders();
     List<Reminder> filterReminders = [];
+
     for (int i = 0; i < allReminders.length; i++) {
       if (allReminders[i].plantKey == widget.plant.key) {
         filterReminders.add(allReminders[i]);
-        print(allReminders[i].isTurnedOn);
-        // print(allReminders.length);
       }
     }
+
     setState(() {
       currentReminders = filterReminders;
     });
@@ -65,10 +60,10 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         'isTurnedOn': true
       });
     }
-    Navigator.of(context, rootNavigator: true).pop('dialog');
-    // Reset form field values
 
-    print('about to clear controller');
+    Navigator.of(context, rootNavigator: true).pop('dialog');
+
+    // Reset form field values
     reminderNameController.clear();
     _getRemindersForPlant(widget.plant.key);
   }

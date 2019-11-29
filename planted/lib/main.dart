@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'login/login.dart';
 
@@ -9,7 +7,6 @@ class PlantedApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // // TODO: implement build
-    // return null;
     return new MaterialApp(
         title: 'Planted',
         // home: new LoginPage()
@@ -23,7 +20,6 @@ class MainPage extends StatelessWidget {
   @override
   // We're going to store the insides of the page using widgets
   Widget build(BuildContext context) {
-    // This widget is in charge of displaying the gif!
     Widget gif = new Container(
         child: new Center(
       child: new Image.asset(
@@ -31,7 +27,6 @@ class MainPage extends StatelessWidget {
       ),
     ));
 
-    // This widget shows the logo
     Widget logo = new Container(
         child: new Center(
       child: new Image.asset(
@@ -144,8 +139,6 @@ class MainPage extends StatelessWidget {
               ),
             ],
           ),
-
-          // this has the version and stuff idk
           version,
         ],
       ),
