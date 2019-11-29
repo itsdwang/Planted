@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import './seePlantsService.dart';
 import './plants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import './addReminders.dart';
 
 class SeePlants extends StatefulWidget {
@@ -9,7 +9,6 @@ class SeePlants extends StatefulWidget {
 }
 
 class SeePlantsState extends State<SeePlants> {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final currentUser = FirebaseAuth.instance.currentUser();
   List<Plant> _plants = [];
 
@@ -21,6 +20,7 @@ class SeePlantsState extends State<SeePlants> {
 
   Future _getDataforView() async {
     List<Plant> plantslist = await SeePlantsService.getPlantsById();
+
     setState(() {
       _plants = plantslist;
     });
@@ -87,13 +87,17 @@ class SeePlantsState extends State<SeePlants> {
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(4),
-                                        child: Text('Species: ' +
-                                            _plants[index].speciesName, style: TextStyle(fontSize: 15)),
+                                        child: Text(
+                                            'Species: ' +
+                                                _plants[index].speciesName,
+                                            style: TextStyle(fontSize: 15)),
                                       ),
                                       Padding(
                                         padding: EdgeInsets.all(4),
-                                        child: Text('Light Requirement: ' +
-                                            _plants[index].lightRequirement, style: TextStyle(fontSize: 15),),
+                                        child: Text(
+                                            'Light Requirement: ' +
+                                                _plants[index].lightRequirement,
+                                            style: TextStyle(fontSize: 15)),
                                       )
                                     ],
                                   ),

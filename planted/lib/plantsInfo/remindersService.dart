@@ -1,14 +1,11 @@
-import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:firebase_database/firebase_database.dart';
+import 'dart:async';
 import './reminder.dart';
 
 class RemindersService {
   static Future<List<Reminder>> getReminders() async {
     List<Reminder> reminderList = new List<Reminder>();
-
-    //filter out for current User ID
     final _firebaseAuth = FirebaseAuth.instance;
     final FirebaseUser user = await _firebaseAuth.currentUser();
 

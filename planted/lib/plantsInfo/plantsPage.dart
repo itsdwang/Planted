@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'AddPlant.dart';
 import '../Reminders.dart';
 import './seePlantsView.dart';
-import './addReminders.dart';
 
 class PlantsPage extends StatefulWidget {
   _PlantsPageState createState() => _PlantsPageState();
