@@ -66,6 +66,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
       // Navigator.of(context, rootNavigator: true).pop('dialog');
     }
     Navigator.of(context, rootNavigator: true).pop('dialog');
+    _getRemindersForPlant(widget.plant.key);
   }
 
   showReminderForm() {
