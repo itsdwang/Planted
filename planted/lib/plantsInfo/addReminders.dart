@@ -113,7 +113,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                         }),
                     DateTimePickerFormField(
                         inputType: InputType.date,
-                        format: DateFormat("yyyy-MM-dd"),
+                        format: DateFormat("EEEE, MM/dd/yyyy"),
                         decoration:
                             InputDecoration(labelText: 'Select Reminder Date'),
                         onChanged: (pickedDate) {
@@ -130,7 +130,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                         }),
                     DateTimePickerFormField(
                         inputType: InputType.time,
-                        format: DateFormat("HH:mm"),
+                        format: DateFormat("h:mm a"),
                         initialTime: TimeOfDay(hour: 5, minute: 5),
                         editable: false,
                         decoration: InputDecoration(
