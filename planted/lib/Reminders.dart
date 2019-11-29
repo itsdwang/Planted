@@ -31,6 +31,14 @@ class RemindersPageState extends State<RemindersPage> {
     });
   }
 
+  deleteReminder(String reminderKey, int index) async {
+    await RemindersService.deleteReminder(reminderKey);
+
+    setState(() {
+      _reminders.removeAt(index);
+    });
+  }
+
   getHumanReadableDate(String date) {
     DateTime reminderDate = DateTime.parse(date);
     String formattedDate = DateFormat('yMMMMd').format(reminderDate);
@@ -91,11 +99,19 @@ class RemindersPageState extends State<RemindersPage> {
                                     getHumanReadableTime(
                                         _reminders[index].reminderTime),
                                 style: TextStyle(fontSize: 15)),
-                          )
+                          ),
                         ],
                       ),
                     ),
                   ),
+                  new Expanded(
+                    child: Align(
+                        alignment: Alignment.centerRight,
+                        child: new IconButton(
+                            icon: Icon(Icons.remove_circle),
+                            onPressed: () =>
+                                deleteReminder(_reminders[index].key, index))),
+                  )
                 ]),
               ));
         },
