@@ -48,47 +48,50 @@ class RemindersPageState extends State<RemindersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("View All active reminders"),
-      ),
       body: new ListView.builder(
         itemCount: _reminders.length,
         itemBuilder: (context, index) {
           return new Card(
               elevation: 5,
               child: Container(
-                height: 110.0,
+                height: 130.0,
                 child: Row(children: <Widget>[
                   Container(
-                      height: 100,
-                      child:
-                      // Text('Plant Name:    ' + _plants[index].plantName))
-                      Center(
-                        child: Container(
-                          child: Column(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(0),
-                                child: Text('Name: ' +
-                                    _reminders[index].reminderName),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(8),
-                                child: Text('Date: ' +
-                                    getHumanReadableDate(_reminders[index].reminderDate)),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(9),
-                                child: Text('Time: ' +
-                                   getHumanReadableTime(_reminders[index].reminderTime)),
-                              )
-                            ],
+                    height: 120,
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                              _reminders[index].reminderName,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
                           ),
-                        ),
-                      )),
+                          Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                                'Date: ' +
+                                    getHumanReadableDate(
+                                        _reminders[index].reminderDate),
+                                style: TextStyle(fontSize: 16)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Text(
+                                'Time: ' +
+                                    getHumanReadableTime(
+                                        _reminders[index].reminderTime),
+                                style: TextStyle(fontSize: 16)),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                 ]),
               ));
-
         },
       ),
     );

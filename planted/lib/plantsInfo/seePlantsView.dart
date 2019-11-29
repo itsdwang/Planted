@@ -72,20 +72,20 @@ class SeePlantsState extends State<SeePlants> {
                           ),
                           Container(
                               height: 100,
-                              child:
-                                  // Text('Plant Name:    ' + _plants[index].plantName))
-                                  Center(
+                              child: Center(
                                 child: Container(
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Padding(
                                         padding: EdgeInsets.all(8),
-                                        child: Text('Plant Name:    ' +
+                                        child: Text('Plant Name: ' +
                                             _plants[index].plantName),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(9),
-                                        child: Text('Species Name:   ' +
+                                        padding: EdgeInsets.all(8),
+                                        child: Text('Species Name: ' +
                                             _plants[index].speciesName),
                                       )
                                     ],
