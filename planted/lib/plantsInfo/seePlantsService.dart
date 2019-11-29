@@ -11,7 +11,6 @@ class SeePlantsService {
     final FirebaseUser user = await _firebaseAuth.currentUser();
     var plantslist = [];
 
-    // TO DO: FILTER OUT PLANTS THAT DONT BELONG TO USER....add check for uid in loop = currentuser.uid
     final db = FirebaseDatabase.instance.reference().child("plants");
     List<Plant> plants = new List<Plant>();
     return FirebaseDatabase.instance
@@ -22,7 +21,7 @@ class SeePlantsService {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, value) {
         print(key);
-        if(user.uid == value["uid"]) {
+        if (user.uid == value["uid"]) {
           Plant plant = new Plant(key, value['plantName'], value['speciesName'],
               value['lightRequirement'], value['imageUrl']);
           print(plant.plantName);
@@ -33,4 +32,46 @@ class SeePlantsService {
       return plants;
     });
   }
+
+  static Future<void> deletePlant(String plantKey) async {
+    FirebaseDatabase.instance
+        .reference()
+        .child("plants")
+        .child(plantKey)
+        .remove();
+    print('after remove of delete Plant');
+
+    FirebaseDatabase.instance
+        .reference()
+        .child("reminders")
+        .once()
+        .then((DataSnapshot snapshot) {
+      Map<dynamic, dynamic> values = snapshot.value;
+      values.forEach((key, value) {
+        print('about to delete reminder');
+        print('reminder key ' + key.toString());
+        print('remind value ' + value.toString());
+      });
+    });
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,7 +41,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     List<Reminder> filterReminders = [];
     for (int i = 0; i < allReminders.length; i++) {
       if (allReminders[i].plantKey == widget.plant.key) {
-        print('plant name is...' + widget.plant.plantName);
         filterReminders.add(allReminders[i]);
         print(allReminders[i].isTurnedOn);
         // print(allReminders.length);
@@ -67,6 +66,10 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
       });
     }
     Navigator.of(context, rootNavigator: true).pop('dialog');
+    // Reset form field values
+
+    print('about to clear controller');
+    reminderNameController.clear();
     _getRemindersForPlant(widget.plant.key);
   }
 
@@ -94,6 +97,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
               key: _addReminderKey,
               child: Container(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
                         decoration:
@@ -157,6 +161,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Text("View and add reminders"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.add), onPressed: showReminderForm)

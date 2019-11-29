@@ -32,12 +32,13 @@ class SeePlantsState extends State<SeePlants> {
     return uid;
   }
 
-  // navigateToRemindersPage(plant) {
-  //   Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //           builder: (context) => AddRemindersPage(plant: plant)));
-  // }
+  removePlant(String plantKey, int index) async {
+    await SeePlantsService.deletePlant(plantKey);
+
+    setState(() {
+      _plants.removeAt(index);
+    });
+  }
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -56,10 +57,10 @@ class SeePlantsState extends State<SeePlants> {
                   child: Card(
                       elevation: 5,
                       child: Container(
-                        height: 70.0,
+                        height: 80.0,
                         child: Row(children: <Widget>[
                           Container(
-                            height: 70.0,
+                            height: 80.0,
                             width: 70.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
@@ -71,7 +72,7 @@ class SeePlantsState extends State<SeePlants> {
                                         "https://www.burpee.com/dw/image/v2/ABAQ_PRD/on/demandware.static/-/Sites-masterCatalog_Burpee/default/dw07e89459/Images/Product%20Images/prod500323/prod500323.jpg?sw=265&sh=312&sm=fit"))),
                           ),
                           Container(
-                              height: 100,
+                              height: 110,
                               child: Center(
                                 child: Container(
                                   child: Column(
@@ -79,19 +80,30 @@ class SeePlantsState extends State<SeePlants> {
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Text('Plant Name: ' +
+                                        padding: EdgeInsets.all(4),
+                                        child: Text('Name: ' +
                                             _plants[index].plantName),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(8),
-                                        child: Text('Species Name: ' +
+                                        padding: EdgeInsets.all(4),
+                                        child: Text('Species: ' +
                                             _plants[index].speciesName),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(4),
+                                        child: Text('Light Requirement: ' +
+                                            _plants[index].lightRequirement),
                                       )
                                     ],
                                   ),
                                 ),
                               )),
+                          Align(
+                              alignment: Alignment.centerRight,
+                              child: new IconButton(
+                                  icon: Icon(Icons.remove_circle),
+                                  onPressed: () =>
+                                      removePlant(_plants[index].key, index)))
                         ]),
                       )));
             }));

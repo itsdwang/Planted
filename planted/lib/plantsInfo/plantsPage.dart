@@ -10,11 +10,11 @@ class PlantsPage extends StatefulWidget {
 }
 
 class _PlantsPageState extends State<PlantsPage> {
-  int _selectedPage = 1;
+  int _selectedPage = 0;
 
   final _pageOptions = [
-    AddPlantPage(),
     RemindersPage(),
+    AddPlantPage(),
     SeePlants(),
   ];
 
@@ -23,6 +23,7 @@ class _PlantsPageState extends State<PlantsPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Planted!"),
+          backgroundColor: Colors.green,
         ),
         resizeToAvoidBottomPadding: false,
         body: _pageOptions[_selectedPage],
@@ -35,12 +36,12 @@ class _PlantsPageState extends State<PlantsPage> {
           },
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle, color: Color.fromARGB(255, 0, 0, 0)),
-                title: new Text('Add Plant', style: TextStyle(color: Colors.black))),
-            BottomNavigationBarItem(
                 icon: Icon(Icons.access_alarm,
                     color: Color.fromARGB(255, 0, 0, 0)),
                 title: new Text('Reminders', style: TextStyle(color: Colors.black))),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.add_circle, color: Color.fromARGB(255, 0, 0, 0)),
+                title: new Text('Add Plant', style: TextStyle(color: Colors.black))),
             BottomNavigationBarItem(
                 icon: Icon(Icons.folder, color: Color.fromARGB(255, 0, 0, 0)),
                 title: new Text('My Plants', style: TextStyle(color: Colors.black)))

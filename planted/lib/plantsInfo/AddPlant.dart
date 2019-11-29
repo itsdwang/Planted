@@ -6,6 +6,7 @@ import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart'; //Image plugin
 import 'dart:async';
 import 'dart:io';
+import 'package:toast/toast.dart';
 
 class AddPlantPage extends StatefulWidget {
   _AddPlantPageState createState() => _AddPlantPageState();
@@ -43,6 +44,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
 
     Future saveToDatabase(BuildContext context) async {
       final currentUser = await _firebaseAuth.currentUser();
+
       if (_formKey.currentState.validate()) {
         String filename = basename(plantImage.path);
         StorageReference firebaseStorageRef =
@@ -51,7 +53,8 @@ class _AddPlantPageState extends State<AddPlantPage> {
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
         StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
 
-        print('Task Snapshot URL: ' + taskSnapshot.ref.getDownloadURL().toString());
+        print('Task Snapshot URL: ' +
+            taskSnapshot.ref.getDownloadURL().toString());
 
         setState(() {
           print("Plant image uploaded");
@@ -63,6 +66,11 @@ class _AddPlantPageState extends State<AddPlantPage> {
           'lightRequirement': lightRequirementController.text,
           'imageUrl': filename
         });
+
+        // Clear all field values after form was submitted
+        nameController.clear();
+        speciesController.clear();
+        lightRequirementController.clear();
       }
     }
 
@@ -127,7 +135,9 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                 }
 
                                 if (plantImage == null) {
-                                  print('Select an Image');
+                                  Toast.show("Select an image", context,
+                                      duration: Toast.LENGTH_LONG,
+                                      gravity: Toast.BOTTOM);
                                 } else {
                                   saveToDatabase(context);
 
