@@ -69,7 +69,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.schedule(
         scheduledReminder.microsecond,
-        'Its time to Water ' + widget.plant.plantName + "!",
+        'Its time to water ' + widget.plant.plantName + "!",
         'Click to Water!',
         scheduledReminder,
         platformChannelSpecifics);
@@ -84,6 +84,10 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         filterReminders.add(allReminders[i]);
       }
     }
+
+    filterReminders.sort((a, b) {
+      return a.compareTo(b);
+    });
 
     setState(() {
       currentReminders = filterReminders;
