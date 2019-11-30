@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:planted/login/login.dart';
 import 'package:planted/plantsInfo/plants.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:math';
 import './reminder.dart';
 import './remindersService.dart';
 
@@ -20,6 +23,9 @@ class AddRemindersPage extends StatefulWidget {
 class _AddRemindersPageState extends State<AddRemindersPage> {
   // need to show reminders for current plant and then add
   // add form button to add a reminder for plant
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      new FlutterLocalNotificationsPlugin();
+
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference databaseReference =
       FirebaseDatabase.instance.reference();
@@ -34,6 +40,41 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   void initState() {
     super.initState();
     _getRemindersForPlant(widget.plant.key);
+    _initReminders();
+  }
+
+  _initReminders() {
+    var initializationSettingsAndroid =
+        new AndroidInitializationSettings('plant');
+    var initializationSettingsIOS =
+        IOSInitializationSettings(onDidReceiveLocalNotification: null);
+    var initializationSettings = InitializationSettings(
+        initializationSettingsAndroid, initializationSettingsIOS);
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: onSelectNotification);
+  }
+
+  Future<void> onSelectNotification(String payload) async {
+    await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
+  Future<void> scheduleNotification(scheduledReminder) async {
+    // print(reminderDate.substring(0, 9) + " " + reminderTime.substring(11, 19));
+    print(scheduledReminder);
+    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+        'your other channel id',
+        'your other channel name',
+        'your other channel description');
+    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+    NotificationDetails platformChannelSpecifics = new NotificationDetails(
+        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+    await flutterLocalNotificationsPlugin.schedule(
+        scheduledReminder.microsecond,
+        'Its time to Water ' + widget.plant.plantName + "!",
+        'Click to Water!',
+        scheduledReminder,
+        platformChannelSpecifics);
   }
 
   _getRemindersForPlant(plantKey) async {
@@ -53,21 +94,29 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
 
   submitReminderForm() async {
     if (_addReminderKey.currentState.validate()) {
+      print(reminderDate);
+      print(reminderTime);
       _addReminderKey.currentState.save();
       final currentUser = await _firebaseAuth.currentUser();
+      DateTime scheduledReminder = DateTime.parse(
+          reminderDate.toString().substring(0, 10) +
+              " " +
+              reminderTime.toString().substring(11, 19));
+
       await databaseReference.child("reminders").push().set({
         'uid': currentUser.uid,
         'plantKey': widget.plant.key,
         'plantName': widget.plant.plantName,
         'reminderName': reminderNameController.text,
+        'reminderID': Random.secure().nextInt(10000),
         'reminderDate': reminderDate.toString(),
         'reminderTime': reminderTime.toString(),
         'isTurnedOn': true
       });
+      scheduleNotification(scheduledReminder);
     }
     Navigator.of(context, rootNavigator: true).pop('dialog');
     // Reset form field values
-
     print('about to clear controller');
     reminderNameController.clear();
     _getRemindersForPlant(widget.plant.key);
