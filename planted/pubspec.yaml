@@ -24,6 +24,7 @@ dependencies:
   image_picker: "^0.6.0+9"
   # Add the dependency for the Firebase Core Flutter SDK
   firebase_core: ^0.4.0+9
+  flutter_local_notifications: ^0.8.4+3
 
   # Add the dependency for the FlutterFire plugin for Google Analytics
   firebase_analytics: ^5.0.2
