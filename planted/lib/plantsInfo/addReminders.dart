@@ -19,14 +19,12 @@ class AddRemindersPage extends StatefulWidget {
 }
 
 class _AddRemindersPageState extends State<AddRemindersPage> {
-<<<<<<< HEAD
+
   // need to show reminders for current plant and then add
   // add form button to add a reminder for plant
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       new FlutterLocalNotificationsPlugin();
 
-=======
->>>>>>> 3f3db5c583d62d3126af69a1a0080de6068f884d
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference databaseReference =
       FirebaseDatabase.instance.reference();
