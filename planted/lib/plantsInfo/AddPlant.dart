@@ -3,10 +3,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:path/path.dart';
-import 'package:image_picker/image_picker.dart'; //Image plugin
+import 'package:image_picker/image_picker.dart';
+import 'package:toast/toast.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:toast/toast.dart';
 
 class AddPlantPage extends StatefulWidget {
   _AddPlantPageState createState() => _AddPlantPageState();
@@ -28,7 +28,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
       height: 200.0,
       width: 300.0,
       child: file == null
-          ? new Text('No image selected!!', textAlign: TextAlign.center)
+          ? new Text('No image selected!', textAlign: TextAlign.center)
           : new Image.file(file),
     );
   }
@@ -49,12 +49,8 @@ class _AddPlantPageState extends State<AddPlantPage> {
         String filename = basename(plantImage.path);
         StorageReference firebaseStorageRef =
             FirebaseStorage.instance.ref().child(filename);
-        print('Image File Name: ' + filename);
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
         StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-
-        print('Task Snapshot URL: ' +
-            taskSnapshot.ref.getDownloadURL().toString());
 
         setState(() {
           print("Plant image uploaded");

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './plantsInfo/reminder.dart';
 import './plantsInfo/remindersService.dart';
-import 'package:intl/intl.dart';
 
 class RemindersPage extends StatefulWidget {
   RemindersPageState createState() => new RemindersPageState();
@@ -18,16 +18,21 @@ class RemindersPageState extends State<RemindersPage> {
 
   _getRemindersForPlant() async {
     List<Reminder> allReminders = await RemindersService.getReminders();
-    List<Reminder> filterReminders = [];
+    List<Reminder> enabledReminders = [];
+
     for (int i = 0; i < allReminders.length; i++) {
       if (allReminders[i].isTurnedOn) {
-        filterReminders.add(allReminders[i]);
-        print(allReminders[i].isTurnedOn);
-        // print(allReminders.length);
+        enabledReminders.add(allReminders[i]);
       }
     }
+
+    // Sort reminders in ascending order by date and time
+    enabledReminders.sort((a, b) {
+      return a.compareTo(b);
+    });
+
     setState(() {
-      _reminders = filterReminders;
+      _reminders = enabledReminders;
     });
   }
 
