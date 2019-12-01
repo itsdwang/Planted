@@ -76,82 +76,124 @@ class _AddPlantPageState extends State<AddPlantPage> {
       body: new ListView(
         shrinkWrap: true,
         children: <Widget>[
-          displaySelectedFile(plantImage),
-          new RaisedButton(
-            child: Text("Add Plant Image"),
-            color: Colors.lightGreen,
-            onPressed: getImage,
+          Padding(
+              padding: EdgeInsets.only(top: 15.0),
+              child: displaySelectedFile(plantImage)),
+          Padding(
+            padding: EdgeInsets.only(top: 15.0, left: 80.0, right: 80.0),
+            child: ButtonTheme(
+              height: 130,
+              child: RaisedButton(
+                child: (Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.add_a_photo,
+                      size: 45,
+                    ),
+                    Text(
+                      "Add Plant Image",
+                      style: TextStyle(fontSize: 25),
+                    ),
+                  ],
+                )),
+                color: Colors.lightGreen,
+                onPressed: getImage,
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+            ),
           ),
-          new RaisedButton(
-            color: Colors.lightGreen,
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      content: Form(
-                        key: _formKey,
-                        child: Column(
+          Padding(
+              padding: EdgeInsets.only(top: 15.0, left: 80.0, right: 80.0),
+              child: ButtonTheme(
+                  height: 130.0,
+                  child: RaisedButton(
+                      color: Colors.lightGreen,
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                content: Form(
+                                  key: _formKey,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      TextFormField(
+                                        controller: nameController,
+                                        decoration:
+                                            InputDecoration(labelText: 'Name:'),
+                                        validator: (value) {
+                                          if (value.isEmpty) {
+                                            return 'Please enter a name';
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      TextFormField(
+                                        controller: speciesController,
+                                        decoration: InputDecoration(
+                                            labelText: 'Species'),
+                                        validator: (value) {
+                                          if (value.isEmpty) {
+                                            return 'Please enter a species';
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                      TextFormField(
+                                          controller:
+                                              lightRequirementController,
+                                          validator: (value) {
+                                            if (value.isEmpty) {
+                                              return 'Please enter a light requirement';
+                                            }
+                                            return null;
+                                          },
+                                          decoration: InputDecoration(
+                                              labelText: 'Light Requirement')),
+                                      RaisedButton(
+                                        child: Text("Submit"),
+                                        onPressed: () {
+                                          if (_formKey.currentState
+                                              .validate()) {
+                                            _formKey.currentState.save();
+                                          }
+
+                                          if (plantImage == null) {
+                                            Toast.show(
+                                                "Select an image", context,
+                                                duration: Toast.LENGTH_LONG,
+                                                gravity: Toast.BOTTOM);
+                                          } else {
+                                            saveToDatabase(context);
+
+                                            // Close dialog box
+                                            Navigator.of(context,
+                                                    rootNavigator: true)
+                                                .pop('dialog');
+                                          }
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            });
+                      },
+                      child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            TextFormField(
-                              controller: nameController,
-                              decoration: InputDecoration(labelText: 'Name:'),
-                              validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'Please enter a name';
-                                }
-                                return null;
-                              },
+                            Icon(
+                              Icons.info,
+                              size: 45,
                             ),
-                            TextFormField(
-                              controller: speciesController,
-                              decoration: InputDecoration(labelText: 'Species'),
-                              validator: (value) {
-                                if (value.isEmpty) {
-                                  return 'Please enter a species';
-                                }
-                                return null;
-                              },
-                            ),
-                            TextFormField(
-                                controller: lightRequirementController,
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return 'Please enter a light requirement';
-                                  }
-                                  return null;
-                                },
-                                decoration: InputDecoration(
-                                    labelText: 'Light Requirement')),
-                            RaisedButton(
-                              child: Text("Submit"),
-                              onPressed: () {
-                                if (_formKey.currentState.validate()) {
-                                  _formKey.currentState.save();
-                                }
-
-                                if (plantImage == null) {
-                                  Toast.show("Select an image", context,
-                                      duration: Toast.LENGTH_LONG,
-                                      gravity: Toast.BOTTOM);
-                                } else {
-                                  saveToDatabase(context);
-
-                                  // Close dialog box
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pop('dialog');
-                                }
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  });
-            },
-            child: Text("Add Plant Info"),
-          ),
+                            Text("Add Plant Info",
+                                style: TextStyle(fontSize: 25)),
+                          ])),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30.0))))
         ],
       ),
     );
