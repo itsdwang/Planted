@@ -16,7 +16,11 @@ class RemindersService {
         .then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, value) {
-        if (value['uid'] == user.uid) {
+        DateTime reminder = DateTime.parse(
+            value['reminderDate'].toString().substring(0, 10) +
+                " " +
+                value['reminderTime'].toString().substring(11, 19));
+        if (value['uid'] == user.uid && reminder.isAfter(DateTime.now())) {
           Reminder reminder = new Reminder(
               key,
               value['uid'],
