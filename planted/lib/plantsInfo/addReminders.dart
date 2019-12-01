@@ -9,6 +9,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:math';
 import './reminder.dart';
 import './remindersService.dart';
+import './plantsPage.dart';
 
 class AddRemindersPage extends StatefulWidget {
   final Plant plant;
@@ -54,7 +55,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
 
   Future<void> onSelectNotification(String payload) async {
     await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+        context, MaterialPageRoute(builder: (context) => PlantsPage()));
   }
 
   Future<void> scheduleNotification(scheduledReminder) async {
@@ -67,6 +68,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
     NotificationDetails platformChannelSpecifics = new NotificationDetails(
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+
     await flutterLocalNotificationsPlugin.schedule(
         scheduledReminder.microsecond,
         'Its time to water ' + widget.plant.plantName + "!",

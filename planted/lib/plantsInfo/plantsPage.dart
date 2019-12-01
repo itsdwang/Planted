@@ -32,11 +32,12 @@ class _PlantsPageState extends State<PlantsPage> {
           backgroundColor: Colors.green,
           actions: <Widget>[
             new RaisedButton(
-              child: Text("logout"),
+              child: Text("Log Out"),
               onPressed: _signoutuser,
               color: Colors.lightGreen,
             )
           ],
+          automaticallyImplyLeading: false
         ),
         resizeToAvoidBottomPadding: false,
         body: _pageOptions[_selectedPage],
