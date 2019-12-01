@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderSide: const BorderSide(
                                 color: Colors.green, width: 5.0),
                           ),
-                          hintText: "username"),
+                          hintText: "Username"),
                       validator: (value) {
                         if (EmailValidator.validate(value)) {
                           return null;
