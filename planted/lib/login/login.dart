@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (EmailValidator.validate(value)) {
                           return null;
                         } else {
-                          return "please enter a valid email";
+                          return "Please enter a valid email";
                         }
                       },
                       controller: usernameController)),
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderSide: const BorderSide(
                                 color: Colors.green, width: 5.0),
                           ),
-                          hintText: "password"),
+                          hintText: "Password"),
                       controller: passwordController)),
               new Container(
                 child: new Row(
