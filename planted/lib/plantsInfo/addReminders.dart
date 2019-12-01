@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:planted/login/login.dart';
 import 'package:planted/plantsInfo/plants.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,7 +19,6 @@ class AddRemindersPage extends StatefulWidget {
 }
 
 class _AddRemindersPageState extends State<AddRemindersPage> {
-
   // need to show reminders for current plant and then add
   // add form button to add a reminder for plant
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -59,7 +57,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   }
 
   Future<void> scheduleNotification(scheduledReminder) async {
-    // print(reminderDate.substring(0, 9) + " " + reminderTime.substring(11, 19));
     print(scheduledReminder);
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your other channel id',
@@ -222,8 +219,22 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         ],
       ),
       body: new ListView.builder(
-        itemCount: currentReminders.length,
+        itemCount: currentReminders.length + 1,
         itemBuilder: (context, index) {
+          if (index == 0) {
+            return new Container(
+              color: Colors.green,
+              child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Reminders for ' + widget.plant.plantName,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 21.0))),
+              padding: EdgeInsets.all(8.0),
+            );
+          }
+
+          index -= 1;
+
           return new Card(
             child: Column(
               children: <Widget>[
