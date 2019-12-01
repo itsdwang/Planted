@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:planted/login/login.dart';
 import 'AddPlant.dart';
 import '../Reminders.dart';
 import './seePlantsView.dart';
@@ -16,12 +18,25 @@ class _PlantsPageState extends State<PlantsPage> {
     SeePlants(),
   ];
 
+  _signoutuser() async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text("Planted!"),
           backgroundColor: Colors.green,
+          actions: <Widget>[
+            new RaisedButton(
+              child: Text("logout"),
+              onPressed: _signoutuser,
+              color: Colors.lightGreen,
+            )
+          ],
         ),
         resizeToAvoidBottomPadding: false,
         body: _pageOptions[_selectedPage],
