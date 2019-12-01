@@ -213,28 +213,14 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: Text("View and add reminders"),
+        title: Text("Reminders for " + widget.plant.plantName),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.add), onPressed: showReminderForm)
         ],
       ),
       body: new ListView.builder(
-        itemCount: currentReminders.length + 1,
+        itemCount: currentReminders.length,
         itemBuilder: (context, index) {
-          if (index == 0) {
-            return new Container(
-              color: Colors.green,
-              child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('Reminders for ' + widget.plant.plantName,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 21.0))),
-              padding: EdgeInsets.all(8.0),
-            );
-          }
-
-          index -= 1;
-
           return new Card(
             child: Column(
               children: <Widget>[
