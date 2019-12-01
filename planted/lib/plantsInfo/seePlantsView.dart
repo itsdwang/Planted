@@ -88,8 +88,8 @@ class SeePlantsState extends State<SeePlants> {
                                       Padding(
                                         padding: EdgeInsets.all(4),
                                         child: Text(
-                                            'Species: ' +
-                                                _plants[index].speciesName,
+                                            'Genus: ' +
+                                                _plants[index].genusName,
                                             style: TextStyle(fontSize: 15)),
                                       ),
                                       Padding(
