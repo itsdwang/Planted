@@ -6,15 +6,27 @@ It can be difficult for beginner plant owners to learn about the characteristics
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Known Bugs](#known-bugs)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+Keeping up with your plants' requirements is now at your fingertips! Save plant data, set reminders, and never miss a watering again!
+
+Features on the Planted! app include:
+
+* Add a plant that you'd like to keep track of.
+* Add a photo for your plant to personalize it to you!
+* Create reminders for your watering and fertlizing needs.
+* Get notified when one of your plants has a task.
 	
 ## Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* Android Studio
+* Flutter Software Development Kit
 	
 ## Setup
 To run this project...
+
+## Known Possible Bugs
+*
+*
+*
