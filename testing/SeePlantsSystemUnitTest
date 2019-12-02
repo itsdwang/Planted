@@ -1,0 +1,17 @@
+Planted!
+  
+See Plants System Unit Test Report  by  Vinay Narayanam
+
+
+Test 1: Retrieve all active plants that user has inputted. 
+  1) Navigate to “my plants” tab in bottom nav. 
+  2) Screen should be populated with all of user’s plants and information about them.
+
+Result 1: PASS.
+
+Test 2: Clicking on a Plant in my Plants List will navigate to Reminders for that Plant.
+  1) Navigate to “my plants” tab in bottom nav. 
+  2) Screen should be populated with all of user’s plants and information about them.
+  3) Click on any Plant to navigate to Reminders Page for specific plant. 
+
+Result 2: Pass
