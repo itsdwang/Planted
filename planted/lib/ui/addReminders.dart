@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:planted/plantsInfo/plants.dart';
+import 'package:planted/models/plant.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:math';
-import './reminder.dart';
-import './remindersService.dart';
+import 'package:planted/models/reminder.dart';
+import 'package:planted/services/remindersService.dart';
 import './plantsPage.dart';
 
 class AddRemindersPage extends StatefulWidget {

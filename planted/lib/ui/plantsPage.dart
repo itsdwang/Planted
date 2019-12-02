@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:planted/login/login.dart';
 import 'AddPlant.dart';
-import '../Reminders.dart';
+import './Reminders.dart';
 import './seePlantsView.dart';
 
 class PlantsPage extends StatefulWidget {
@@ -28,17 +28,16 @@ class _PlantsPageState extends State<PlantsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Planted!"),
-          backgroundColor: Colors.green,
-          actions: <Widget>[
-            new RaisedButton(
-              child: Text("Log Out"),
-              onPressed: _signoutuser,
-              color: Colors.lightGreen,
-            )
-          ],
-          automaticallyImplyLeading: false
-        ),
+            title: Text("Planted!"),
+            backgroundColor: Colors.green,
+            actions: <Widget>[
+              new RaisedButton(
+                child: Text("Log Out"),
+                onPressed: _signoutuser,
+                color: Colors.lightGreen,
+              )
+            ],
+            automaticallyImplyLeading: false),
         resizeToAvoidBottomPadding: false,
         body: _pageOptions[_selectedPage],
         bottomNavigationBar: BottomNavigationBar(
