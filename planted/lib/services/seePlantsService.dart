@@ -18,7 +18,7 @@ class SeePlantsService {
       values.forEach((key, value) {
         print(key);
         if (user.uid == value["uid"]) {
-          Plant plant = new Plant(key, value['plantName'], value['speciesName'],
+          Plant plant = new Plant(key, value['plantName'], value['genusName'],
               value['lightRequirement'], value['imageUrl']);
           print(plant.plantName);
           plants.add(plant);

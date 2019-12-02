@@ -46,7 +46,9 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget title = new Container(
     child: Text("Welcome to Planted!",
-        style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
+        style: TextStyle(fontSize: 30),
+        textAlign: TextAlign.center
+    ),
   );
 
   @override
@@ -54,8 +56,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         body: Form(
             key: _formKey,
-            child: Wrap(runSpacing: 20, spacing: 20, children: <Widget>[
-              title,
+            child: Wrap(runSpacing: 30, spacing: 30, children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(15.0, 100.0, 15.0, 2.0),
+                child: title,
+              ),
               Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 2.0, 15.0, 2.0),
                   child: TextFormField(
@@ -89,18 +94,18 @@ class _LoginPageState extends State<LoginPage> {
                 child: new Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.fromLTRB(70.0, 0, 30.0, 0),
+                      padding: EdgeInsets.fromLTRB(60.0, 0, 30.0, 0),
                       child: new RaisedButton(
                         child: new Text("Login"),
-                        color: Colors.red[600],
+                        color: Colors.greenAccent[100],
                         onPressed: loginToAccount,
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(50.0, 0, 30.0, 0),
+                      padding: EdgeInsets.fromLTRB(20.0, 0, 30.0, 0),
                       child: new RaisedButton(
                         child: new Text("Sign Up"),
-                        color: Colors.blueAccent[600],
+                        color: Colors.blueAccent[000],
                         onPressed: signUpAndRegister,
                       ),
                     ),
