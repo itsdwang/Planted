@@ -1,9 +1,11 @@
+#### Planted!
+#### Release 1.0 
+#### **Team Name: Planted**
+#### **Date Revised: December 2, 2019**
+
+------
+
 # System and Unit Test Report
-Planted!
-
-Team Name: Planted!
-
-Date Revised: November 29, 2019
 
 ### User Story 1 from Sprint 1
 As a basic user, I want to be able to create a profile, so I can have my data saved.
@@ -84,33 +86,37 @@ Scenario 5:
 - Users will be able to see all the reminders set for all their plants and they can delete the reminders by pressing the ‘-’ button to the right of each reminder.
 - If no reminders are set/turned on for any of the user’s plants then there would be no reminders showing up on the ‘Reminders’ page.
 
-G. Unit Tests
-	Jessica Pan: (FUNCTION) Unit Tests
-Start Planted app; select ‘Grow’; type
-Username: <Doe.john@gmail.com>
-Password: <UCSCbananaSlug21>
-Select the ‘Login’ button
-	Daniel Wang: (FUNCTION) Unit Tests
-Start Planted app; select ‘Grow’; type
-Username: <Doe.john@gmail.com>
-Password: <UCSCbananaSlug21>
-Select the ‘Login’ button
-	Vinay Narayanam: (FUNCTION) Unit Tests
-Start Planted app; select ‘Grow’; type
-Username: <Doe.john@gmail.com>
-Password: <UCSCbananaSlug21>
-Select the ‘Login’ button
-	Alyssa Melton: (FUNCTION) Unit Tests
+## G. Unit Tests
 
-Start Planted app; select ‘Grow’; type
-Username: <Doe.john@gmail.com>
-Password: <UCSCbananaSlug21>
-Select the ‘Login’ button
-	Eduardo Villa: (FUNCTION) Unit Tests
-Start Planted app; select ‘Grow’; type
-Username: <Doe.john@gmail.com>
-Password: <UCSCbananaSlug21>
-Select the ‘Login’ button
+Jessica Pan: (FUNCTION) Unit Tests
+- Start Planted app; select ‘Grow’; type
+- Username: <Doe.john@gmail.com>
+- Password: <UCSCbananaSlug21>
+- Select the ‘Login’ button
+
+Daniel Wang: (FUNCTION) Unit Tests
+- Start Planted app; select ‘Grow’; type
+- Username: <Doe.john@gmail.com>
+- Password: <UCSCbananaSlug21>
+- Select the ‘Login’ button
+
+Vinay Narayanam: (FUNCTION) Unit Tests
+- Start Planted app; select ‘Grow’; type
+- Username: <Doe.john@gmail.com>
+- Password: <UCSCbananaSlug21>
+- Select the ‘Login’ button
+
+Alyssa Melton: (FUNCTION) Unit Tests
+- Start Planted app; select ‘Grow’; type
+- Username: <Doe.john@gmail.com>
+- Password: <UCSCbananaSlug21>
+- Select the ‘Login’ button
+
+Eduardo Villa: (FUNCTION) Unit Tests
+- Start Planted app; select ‘Grow’; type
+- Username: <Doe.john@gmail.com>
+- Password: <UCSCbananaSlug21>
+- Select the ‘Login’ button
 
 		
 
