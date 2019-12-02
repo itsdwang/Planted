@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:planted/services/seePlantsService.dart';
-import 'package:planted/models/plant.dart';
-import './addReminders.dart';
+import 'package:planted/services/SeePlantsService.dart';
+import 'package:planted/models/Plant.dart';
+import './AddReminders.dart';
 
 class SeePlants extends StatefulWidget {
   SeePlantsState createState() => new SeePlantsState();

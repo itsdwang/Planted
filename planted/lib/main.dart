@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'login/login.dart';
-import 'login/splashPage.dart';
+import 'login/Login.dart';
+import 'login/SplashPage.dart';
 
 void main() => runApp(PlantedApp());
 

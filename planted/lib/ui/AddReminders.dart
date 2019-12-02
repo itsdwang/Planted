@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:planted/models/plant.dart';
+import 'package:planted/models/Plant.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:math';
-import 'package:planted/models/reminder.dart';
-import 'package:planted/services/remindersService.dart';
-import './plantsPage.dart';
+import 'package:planted/models/Reminder.dart';
+import 'package:planted/services/RemindersService.dart';
+import './PlantsPage.dart';
 
 class AddRemindersPage extends StatefulWidget {
   final Plant plant;
@@ -19,11 +19,8 @@ class AddRemindersPage extends StatefulWidget {
 }
 
 class _AddRemindersPageState extends State<AddRemindersPage> {
-  // need to show reminders for current plant and then add
-  // add form button to add a reminder for plant
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       new FlutterLocalNotificationsPlugin();
-
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference databaseReference =
       FirebaseDatabase.instance.reference();
@@ -57,7 +54,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
   }
 
   Future<void> scheduleNotification(scheduledReminder, reminderID) async {
-    print(scheduledReminder);
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your other channel id',
         'your other channel name',
@@ -99,8 +95,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
 
   submitReminderForm() async {
     if (_addReminderKey.currentState.validate()) {
-      print(reminderDate);
-      print(reminderTime);
       _addReminderKey.currentState.save();
       final currentUser = await _firebaseAuth.currentUser();
       DateTime scheduledReminder = DateTime.parse(
@@ -123,8 +117,8 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     }
 
     Navigator.of(context, rootNavigator: true).pop('dialog');
+
     // Reset form field values
-    print('about to clear controller');
     reminderNameController.clear();
     _getRemindersForPlant(widget.plant.key);
   }
@@ -167,7 +161,6 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                         controller: reminderNameController,
                         validator: (value) {
                           if (value.isEmpty) {
-                            print("empty");
                             return "Please enter a Date";
                           }
 
@@ -183,10 +176,8 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                         },
                         validator: (value) {
                           if (value == null) {
-                            print(value.toString().length);
                             return "Please enter a Date";
                           }
-                          print(value.toString());
 
                           return null;
                         }),
@@ -244,8 +235,9 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                           .child("reminders")
                           .child(currentReminders[index].key)
                           .update({'isTurnedOn': value});
-                      print(value);
+
                       currentReminders[index].setTurnedOnValue(value);
+
                       if (value) {
                         var scheduledReminder = getDateTimeReminder(
                             currentReminders[index].reminderDate,

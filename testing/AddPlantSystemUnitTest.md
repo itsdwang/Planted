@@ -1,6 +1,7 @@
-Planted!
+#### Planted!
 
-Add Plant System Unit Test Report by Alyssa Melton
+# Add Plant System Unit Test Report 
+by Alyssa Melton
 --------------------------------------------------------------------------------
 
 Test 1: Add an image while using 'Add Plant' function.
