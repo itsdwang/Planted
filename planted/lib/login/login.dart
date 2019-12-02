@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:planted/plantsInfo/plantsPage.dart';
+import 'package:planted/ui/plantsPage.dart';
 
 //only login page for now
 

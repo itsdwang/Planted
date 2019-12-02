@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import './seePlantsService.dart';
-import './plants.dart';
+import 'package:planted/services/seePlantsService.dart';
+import 'package:planted/models/plant.dart';
 import './addReminders.dart';
 
 class SeePlants extends StatefulWidget {
