@@ -52,9 +52,11 @@ class _AddPlantPageState extends State<AddPlantPage> {
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
         StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
 
-        setState(() {
-          print("Plant image uploaded");
-        });
+        if(this.mounted) {
+          setState(() {
+            print("Plant image uploaded");
+          });
+        }
 
         await databaseReference.child("plants").push().set({
           'uid': currentUser.uid,
@@ -123,7 +125,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                       TextFormField(
                                         controller: nameController,
                                         decoration:
-                                            InputDecoration(labelText: 'Name:'),
+                                            InputDecoration(labelText: 'Name'),
                                         validator: (value) {
                                           if (value.isEmpty) {
                                             return 'Please enter a name';
@@ -133,8 +135,8 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                       ),
                                       TextFormField(
                                         controller: genusController,
-                                        decoration: InputDecoration(
-                                            labelText: 'Genus'),
+                                        decoration:
+                                            InputDecoration(labelText: 'Genus'),
                                         validator: (value) {
                                           if (value.isEmpty) {
                                             return 'Please enter a genus';
@@ -159,7 +161,6 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                           if (_formKey.currentState
                                               .validate()) {
                                             _formKey.currentState.save();
-                                            
                                           }
 
                                           if (plantImage == null) {

@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:planted/login/login.dart';
+import 'package:planted/login/Login.dart';
 import 'AddPlant.dart';
 import './Reminders.dart';
-import './seePlantsView.dart';
+import './SeePlantsView.dart';
 
 class PlantsPage extends StatefulWidget {
   _PlantsPageState createState() => _PlantsPageState();
