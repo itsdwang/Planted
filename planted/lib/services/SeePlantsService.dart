@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
-import 'package:planted/models/plant.dart';
+import 'package:planted/models/Plant.dart';
 
 class SeePlantsService {
   static Future<List<Plant>> getPlantsById() async {
@@ -16,11 +16,9 @@ class SeePlantsService {
         .then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> values = snapshot.value;
       values.forEach((key, value) {
-        print(key);
         if (user.uid == value["uid"]) {
           Plant plant = new Plant(key, value['plantName'], value['genusName'],
               value['lightRequirement'], value['imageUrl']);
-          print(plant.plantName);
           plants.add(plant);
         }
       });

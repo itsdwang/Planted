@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:planted/models/reminder.dart';
-import 'package:planted/services/remindersService.dart';
+import 'package:planted/models/Reminder.dart';
+import 'package:planted/services/RemindersService.dart';
 
 class RemindersPage extends StatefulWidget {
   RemindersPageState createState() => new RemindersPageState();

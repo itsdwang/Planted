@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:planted/ui/plantsPage.dart';
-
-//login page
+import 'package:planted/ui/PlantsPage.dart';
 
 class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
@@ -22,10 +19,6 @@ class _LoginPageState extends State<LoginPage> {
           email: usernameController.text, password: passwordController.text);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => PlantsPage()));
-
-      // TO DO: Add unable to register path
-    } else {
-      // credentials not good add error route;
     }
   }
 
@@ -35,20 +28,12 @@ class _LoginPageState extends State<LoginPage> {
           email: usernameController.text, password: passwordController.text);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => PlantsPage()));
-
-      // TO DO: Add unable to login path
-    } else {
-      // credentials not good add error route;
     }
   }
 
-  // Widgets
-
   Widget title = new Container(
     child: Text("Welcome to Planted!",
-        style: TextStyle(fontSize: 30),
-        textAlign: TextAlign.center
-    ),
+        style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
   );
 
   @override

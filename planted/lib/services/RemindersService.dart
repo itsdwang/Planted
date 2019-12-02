@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'dart:async';
-import 'package:planted/models/reminder.dart';
+import 'package:planted/models/Reminder.dart';
 
 class RemindersService {
   static Future<List<Reminder>> getReminders() async {
