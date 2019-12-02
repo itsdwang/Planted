@@ -6,10 +6,11 @@ class Reminder {
   String reminderName;
   String reminderDate;
   String reminderTime;
+  int reminderID;
   bool isTurnedOn;
 
   Reminder(key, uid, plantKey, plantName, reminderName, reminderDate,
-      reminderTime, value) {
+      reminderTime, reminderID, value) {
     this.key = key;
     this.uid = uid;
     this.plantKey = plantKey;
@@ -17,6 +18,7 @@ class Reminder {
     this.reminderName = reminderName;
     this.reminderDate = reminderDate;
     this.reminderTime = reminderTime;
+    this.reminderID = reminderID;
     this.isTurnedOn = value;
   }
 
