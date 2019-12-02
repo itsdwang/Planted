@@ -159,6 +159,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                           if (_formKey.currentState
                                               .validate()) {
                                             _formKey.currentState.save();
+                                            
                                           }
 
                                           if (plantImage == null) {
