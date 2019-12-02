@@ -1,4 +1,4 @@
-# Working Prototype Known Problems Report
+# Working Prototype Report
 **Planted!**
 
 **Team Name: Planted**
