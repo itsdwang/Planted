@@ -1,4 +1,9 @@
 #### Planted!
+#### Release 1.0 
+#### **Team Name: Planted**
+#### **Date Revised: December 2, 2019**
+
+------
 
 # Add Plant System Unit Test Report 
 by Alyssa Melton
