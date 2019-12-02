@@ -1,0 +1,31 @@
+Planted!
+
+Login System Unit Test Report  by  Vinay Narayanam
+
+
+Test 1: Allow user to sign up with a valid email and password 
+	
+Display form for user to input <email> and <password>
+If email and password is valid, add user details to firebase. 
+Login current User and navigate to app. 
+
+Result 1: PASS
+
+Test 2: If user details are empty for <email> display error message.
+Display form for user to input <email> and <password>
+If email field is empty when form is submitted, display error message.
+
+Result 2: Pass
+
+Test 3: If user details are empty for <password> display error message.
+Display form for user to input <email> and <password>
+If <password> field is empty when form is submitted, display error message.
+
+Result 3: PASS
+
+Test 4: If user wants to sign up with email already in database display error message.
+Display form for user to input <email> and <password>
+If <email> is already in database, do not let user sign up and display error message.
+
+Result 4: Pass
+ 
