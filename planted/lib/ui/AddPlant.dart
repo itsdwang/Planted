@@ -21,7 +21,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
 
   final nameController = new TextEditingController();
   final lightRequirementController = new TextEditingController();
-  final speciesController = new TextEditingController();
+  final genusController = new TextEditingController();
 
   Widget displaySelectedFile(File file) {
     return new SizedBox(
@@ -59,14 +59,14 @@ class _AddPlantPageState extends State<AddPlantPage> {
         await databaseReference.child("plants").push().set({
           'uid': currentUser.uid,
           'plantName': nameController.text,
-          'speciesName': speciesController.text,
+          'genusName': genusController.text,
           'lightRequirement': lightRequirementController.text,
           'imageUrl': filename
         });
 
         // Clear all field values after form was submitted
         nameController.clear();
-        speciesController.clear();
+        genusController.clear();
         lightRequirementController.clear();
       }
     }
@@ -132,12 +132,12 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                         },
                                       ),
                                       TextFormField(
-                                        controller: speciesController,
+                                        controller: genusController,
                                         decoration: InputDecoration(
-                                            labelText: 'Species'),
+                                            labelText: 'Genus'),
                                         validator: (value) {
                                           if (value.isEmpty) {
-                                            return 'Please enter a species';
+                                            return 'Please enter a genus';
                                           }
                                           return null;
                                         },
