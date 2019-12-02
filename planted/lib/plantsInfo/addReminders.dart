@@ -56,7 +56,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         context, MaterialPageRoute(builder: (context) => PlantsPage()));
   }
 
-  Future<void> scheduleNotification(scheduledReminder) async {
+  Future<void> scheduleNotification(scheduledReminder, reminderID) async {
     print(scheduledReminder);
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your other channel id',
@@ -67,11 +67,15 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
 
     await flutterLocalNotificationsPlugin.schedule(
-        scheduledReminder.microsecond,
+        reminderID,
         'Its time to water ' + widget.plant.plantName + "!",
         'Click to Water!',
         scheduledReminder,
         platformChannelSpecifics);
+  }
+
+  cancelReminder(reminderID) async {
+    await flutterLocalNotificationsPlugin.cancel(reminderID);
   }
 
   _getRemindersForPlant(plantKey) async {
@@ -104,17 +108,18 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
               " " +
               reminderTime.toString().substring(11, 19));
 
+      int reminderID = Random.secure().nextInt(10000);
       await databaseReference.child("reminders").push().set({
         'uid': currentUser.uid,
         'plantKey': widget.plant.key,
         'plantName': widget.plant.plantName,
         'reminderName': reminderNameController.text,
-        'reminderID': Random.secure().nextInt(10000),
+        'reminderID': reminderID,
         'reminderDate': reminderDate.toString(),
         'reminderTime': reminderTime.toString(),
         'isTurnedOn': true
       });
-      scheduleNotification(scheduledReminder);
+      scheduleNotification(scheduledReminder, reminderID);
     }
 
     Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -122,6 +127,12 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     print('about to clear controller');
     reminderNameController.clear();
     _getRemindersForPlant(widget.plant.key);
+  }
+
+  getDateTimeReminder(String reminderDate, String reminderTime) {
+    return DateTime.parse(reminderDate.toString().substring(0, 10) +
+        " " +
+        reminderTime.toString().substring(11, 19));
   }
 
   getHumanReadableDate(String date) {
@@ -235,6 +246,16 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                           .update({'isTurnedOn': value});
                       print(value);
                       currentReminders[index].setTurnedOnValue(value);
+                      if (value) {
+                        var scheduledReminder = getDateTimeReminder(
+                            currentReminders[index].reminderDate,
+                            currentReminders[index].reminderTime);
+                        scheduleNotification(scheduledReminder,
+                            currentReminders[index].reminderID);
+                      } else {
+                        cancelReminder(currentReminders[index].reminderID);
+                        // turn off reminder
+                      }
                     },
                     title: new Text(getHumanReadableDate(
                         currentReminders[index].reminderDate.substring(0, 10))),
