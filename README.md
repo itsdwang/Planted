@@ -70,3 +70,6 @@ The first release includes functionality for the following user stories:
 Project is created with:
 * Android Studio
 * Flutter Software Development Kit
+
+## Coding Style Guide
+Project was developed in adherence with the official Dart style guide located at https://dart.dev/guides/language/effective-dart.
