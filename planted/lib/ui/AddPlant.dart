@@ -6,7 +6,6 @@ import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter/services.dart';
-import 'SeePlantsView.dart';
 import 'dart:async';
 import 'dart:io';
 
