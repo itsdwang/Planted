@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'dart:async';
 import 'package:planted/models/Reminder.dart';
 
 class RemindersService {
+  /// getReminders() gets reminders from the firebase database for a plant.
   static Future<List<Reminder>> getReminders() async {
     List<Reminder> reminderList = new List<Reminder>();
     final _firebaseAuth = FirebaseAuth.instance;
@@ -39,6 +41,7 @@ class RemindersService {
     });
   }
 
+  /// deleteReminder deletes a reminder from firebase database.
   static Future<void> deleteReminder(String reminderKey) async {
     FirebaseDatabase.instance
         .reference()
