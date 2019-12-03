@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:planted/ui/PlantsPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = new TextEditingController();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  /// signUpAndRegister() registers the new user and stores credientials to firebase database.
   void signUpAndRegister() async {
     if (_formKey.currentState.validate()) {
       AuthResult user = await _firebaseAuth.createUserWithEmailAndPassword(
@@ -22,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  /// loginToAccount() logs the user into their profile with the valid credentials.
   void loginToAccount() async {
     if (_formKey.currentState.validate()) {
       AuthResult user = await _firebaseAuth.signInWithEmailAndPassword(
@@ -31,11 +33,13 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  /// Displays the header of the login page.
   Widget title = new Container(
     child: Text("Welcome to Planted!",
         style: TextStyle(fontSize: 30), textAlign: TextAlign.center),
   );
 
+  /// Displays the login form for the user to input credentials.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
