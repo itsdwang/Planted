@@ -5,6 +5,7 @@ class Plant {
   String lightRequirement;
   String imageUrl;
 
+  /// Constructor to store user's input values to add plant form.
   Plant(key, plantName, genusName, lightRequirement, image) {
     this.key = key;
     this.plantName = plantName;
@@ -13,6 +14,7 @@ class Plant {
     this.imageUrl = image;
   }
 
+  /// Places values from map structure to the Plant variables.
   Plant.fromMap(Map<String, dynamic> map) {
     plantName = map["plantName"];
     genusName = map["genusName"];
@@ -20,6 +22,7 @@ class Plant {
     imageUrl = map["imageUrl"];
   }
 
+  /// Creates a new Plant instance from a map structure.
   Plant.fromJson(this.key, Map map) {
     plantName = map["plantName"];
     genusName = map["genusName"];

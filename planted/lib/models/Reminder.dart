@@ -9,6 +9,7 @@ class Reminder {
   int reminderID;
   bool isTurnedOn;
 
+  /// Constructor to store the reminder's data.
   Reminder(key, uid, plantKey, plantName, reminderName, reminderDate,
       reminderTime, reminderID, value) {
     this.key = key;
@@ -22,10 +23,12 @@ class Reminder {
     this.isTurnedOn = value;
   }
 
+  /// setTurnedOnValue(value) changes the value of a reminder (on/off).
   setTurnedOnValue(value) {
     this.isTurnedOn = value;
   }
 
+  /// Compares date & time for two reminders for organizing reminders on Reminders.dart.
   compareTo(Reminder b) {
     if (this.reminderDate.compareTo(b.reminderDate) > 0) {
       return 1;
