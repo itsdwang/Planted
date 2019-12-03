@@ -6,6 +6,7 @@ import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter/services.dart';
+import 'SeePlantsView.dart';
 import 'dart:async';
 import 'dart:io';
 
@@ -66,11 +67,13 @@ class _AddPlantPageState extends State<AddPlantPage> {
           'lightRequirement': lightRequirementController.text,
           'imageUrl': filename
         });
-
         // Clear all field values after form was submitted
         nameController.clear();
         genusController.clear();
         lightRequirementController.clear();
+        setState(() {
+          plantImage = null;
+        });
       }
     }
 
@@ -181,7 +184,11 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                                 gravity: Toast.BOTTOM);
                                           } else {
                                             saveToDatabase(context);
-
+                                            Toast.show(
+                                                "Plant has been succesfully added!",
+                                                context,
+                                                duration: Toast.LENGTH_LONG,
+                                                gravity: Toast.TOP);
                                             // Close dialog box
                                             Navigator.of(context,
                                                     rootNavigator: true)
