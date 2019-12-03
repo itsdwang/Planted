@@ -13,6 +13,7 @@ It can be difficult for beginner plant owners to learn about the characteristics
 * [General info](#general-info)
 * [Features and Functionality](#features-and-functionality)
 * [Technologies](#technologies)
+* [Coding Style Guide](#coding-style-guide)
 
 ## General info
 Keeping up with your plants' requirements is now at your fingertips! Save plant data, set reminders, and never miss a watering again!
@@ -70,3 +71,6 @@ The first release includes functionality for the following user stories:
 Project is created with:
 * Android Studio
 * Flutter Software Development Kit
+
+## Coding Style Guide
+Project was developed in adherence with the official Dart style guide located at https://dart.dev/guides/language/effective-dart.
