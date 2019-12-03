@@ -1,0 +1,15 @@
+Planted!
+
+Plant Removal Unit Test Report by Daniel Wang
+
+Test 1: If the user wants to remove a plant, they can click on the '-' symbol next to the plant entry. The plant should be removed from the "My Plants" list.
+
+Result 1: PASS
+
+Test 2: Removing a plant should cause that plant's corresponding reminders to be removed from the reminders list.
+
+Result 2: PASS
+
+Test 3: Removing a plant should cause that plant's corresponding reminders to be removed from the reminders list.
+
+Result 3: FAIL
