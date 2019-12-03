@@ -74,3 +74,6 @@ Project is created with:
 
 ## Coding Style Guide
 Project was developed in adherence with the official Dart style guide located at https://dart.dev/guides/language/effective-dart.
+
+## Scrum Board
+The current progress of the team's completion can be reviewed in Trello at https://trello.com/invite/b/fHigjRpm/54bcb096dccd36129dcb4db3d2b6dce0/scrum-board
