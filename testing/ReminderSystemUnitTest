@@ -1,0 +1,29 @@
+Planted!
+
+Reminder System Unit Test Report  by  Vinay Narayanam
+
+Test 1: Reminder Service should return all current users set reminders for all plants 
+  1) Navigate to Reminders Page 
+  2) All current active reminders should be displayed, if reminder is after the current time 
+
+Result 1: PASS
+
+Test 2: Add Reminders Page should filter out results from Reminders for specific plant regardless of if alarm is active or not.
+
+  1) Navigate to add reminders page for a plant. 
+  2) See all current reminders for plant regardless of active status 
+
+Result 2: PASS
+
+Test 3: Reminder and Local Notification is scheduled when add Reminder form is submitted 
+  1) Fill out information in add reminder form for specific plant.
+  2) Reminder information is uploaded to firebase. 
+  3) Local Notification is scheduled to appear at desired time.
+
+Result 3: PASS
+
+Test 4: Turning a specific reminder to inactive cancels the notification that is scheduled to appear
+  1) Toggle a specific reminder to inactive in add reminders page. 
+  2) No local notification should appear on phone. 
+
+Result 4: PASS
