@@ -1,0 +1,45 @@
+Planted!
+
+Logout System Unit Test Report by Jessica Pan
+
+Test 1: Logout after logging in to the application from landing page.
+
+User enters credentials: <username> and <password>
+User selects 'Login' or 'Sign up'.
+Once user is logged into the application, select logout from the landing page, which is the Reminders page.
+User is be brought back to the login page.
+
+Result 1: PASS
+
+
+Test 2: Logout after logging in to the application from Add Plant page.
+
+User enters credentials: <username> and <password>
+User selects 'Login' or 'Sign up'.
+Once user is logged into the application, user navigates to the Add Plant page.
+The user then selects the logout button.
+User is be brought back to the login page.
+
+Result 2: PASS
+
+
+Test 3: Logout after logging in to the application from My Plants page.
+
+User enters credentials: <username> and <password>
+User selects 'Login' or 'Sign up'.
+Once user is logged into the application, user navigates to the My Plants page.
+The user then selects the logout button.
+User is be brought back to the login page.
+
+Result 3: PASS
+
+
+Test 4: Clicking return button at the bottom of android device after logging out.
+
+The user then selects the logout button after being logged in.
+User is be brought back to the login page.
+User then selects the return button at the bottom of the android device.
+User still remains at the login page, and can only have access to profile after entering credentials.
+
+Result 4: FAIL
+
