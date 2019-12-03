@@ -5,6 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:toast/toast.dart';
+import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:io';
 
@@ -52,7 +53,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
         StorageUploadTask uploadTask = firebaseStorageRef.putFile(plantImage);
         StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
 
-        if(this.mounted) {
+        if (this.mounted) {
           setState(() {
             print("Plant image uploaded");
           });
@@ -123,27 +124,33 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                     mainAxisSize: MainAxisSize.min,
                                     children: <Widget>[
                                       TextFormField(
-                                        controller: nameController,
-                                        decoration:
-                                            InputDecoration(labelText: 'Name'),
-                                        validator: (value) {
-                                          if (value.isEmpty) {
-                                            return 'Please enter a name';
-                                          }
-                                          return null;
-                                        },
-                                      ),
+                                          controller: nameController,
+                                          decoration: InputDecoration(
+                                              labelText: 'Name'),
+                                          validator: (value) {
+                                            if (value.isEmpty) {
+                                              return 'Please enter a name';
+                                            }
+                                            return null;
+                                          },
+                                          inputFormatters: [
+                                            new LengthLimitingTextInputFormatter(
+                                                18),
+                                          ]),
                                       TextFormField(
-                                        controller: genusController,
-                                        decoration:
-                                            InputDecoration(labelText: 'Genus'),
-                                        validator: (value) {
-                                          if (value.isEmpty) {
-                                            return 'Please enter a genus';
-                                          }
-                                          return null;
-                                        },
-                                      ),
+                                          controller: genusController,
+                                          decoration: InputDecoration(
+                                              labelText: 'Genus'),
+                                          validator: (value) {
+                                            if (value.isEmpty) {
+                                              return 'Please enter a genus';
+                                            }
+                                            return null;
+                                          },
+                                          inputFormatters: [
+                                            new LengthLimitingTextInputFormatter(
+                                                18),
+                                          ]),
                                       TextFormField(
                                           controller:
                                               lightRequirementController,
@@ -154,7 +161,11 @@ class _AddPlantPageState extends State<AddPlantPage> {
                                             return null;
                                           },
                                           decoration: InputDecoration(
-                                              labelText: 'Light Requirement')),
+                                              labelText: 'Light Requirement'),
+                                          inputFormatters: [
+                                            new LengthLimitingTextInputFormatter(
+                                                18),
+                                          ]),
                                       RaisedButton(
                                         child: Text("Submit"),
                                         onPressed: () {
