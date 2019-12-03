@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:planted/login/Login.dart';
+
 import 'AddPlant.dart';
 import './Reminders.dart';
 import './SeePlantsView.dart';
@@ -12,13 +13,15 @@ class PlantsPage extends StatefulWidget {
 class _PlantsPageState extends State<PlantsPage> {
   int _selectedPage = 0;
 
+  /// List of pages accessible from the bottom navigation bar.
   final _pageOptions = [
     RemindersPage(),
     AddPlantPage(),
     SeePlants(),
   ];
 
-  _signoutuser() async {
+  /// Signs user out of their account.
+  _signOutUser() async {
     await FirebaseAuth.instance.signOut();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
@@ -33,7 +36,7 @@ class _PlantsPageState extends State<PlantsPage> {
             actions: <Widget>[
               new RaisedButton(
                 child: Text("Log Out"),
-                onPressed: _signoutuser,
+                onPressed: _signOutUser,
                 color: Colors.lightGreen,
               )
             ],

@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:planted/services/SeePlantsService.dart';
+
+import 'package:flutter/material.dart';
 import 'package:planted/models/Plant.dart';
+import 'package:planted/services/SeePlantsService.dart';
+
 import './AddReminders.dart';
 
 class SeePlants extends StatefulWidget {
@@ -15,23 +17,27 @@ class SeePlantsState extends State<SeePlants> {
   @override
   void initState() {
     super.initState();
-    _getDataforView();
+    _getDataForView();
   }
 
-  Future _getDataforView() async {
-    List<Plant> plantslist = await SeePlantsService.getPlantsById();
+  /// Sets plants variable to list of all the user's plants.
+  Future _getDataForView() async {
+    List<Plant> plantsList = await SeePlantsService.getPlantsById();
 
     setState(() {
-      _plants = plantslist;
+      _plants = plantsList;
     });
   }
 
+  /// Returns the uid of the currently logged-in user.
   getCurrentUser() async {
     final currentUser = await FirebaseAuth.instance.currentUser();
     final uid = currentUser.uid;
+
     return uid;
   }
 
+  /// Deletes a plant from the Firebase database and the plants list.
   deletePlant(String plantKey, int index) async {
     await SeePlantsService.deletePlant(plantKey);
 

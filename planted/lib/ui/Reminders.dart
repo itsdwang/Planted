@@ -16,17 +16,20 @@ class RemindersPageState extends State<RemindersPage> {
     _getRemindersForPlant();
   }
 
+  /// Returns all reminders enabled reminders for all of the user's plants.
   _getRemindersForPlant() async {
     List<Reminder> allReminders = await RemindersService.getReminders();
     List<Reminder> enabledReminders = [];
 
+
+    /// Get all enabled reminders.
     for (int i = 0; i < allReminders.length; i++) {
       if (allReminders[i].isTurnedOn) {
         enabledReminders.add(allReminders[i]);
       }
     }
 
-    // Sort reminders in ascending order by date and time
+    /// Sort reminders in ascending order by date and time.
     enabledReminders.sort((a, b) {
       return a.compareTo(b);
     });
@@ -36,6 +39,7 @@ class RemindersPageState extends State<RemindersPage> {
     });
   }
 
+  /// Deletes a reminder from the Firebase database and the reminders list.
   deleteReminder(String reminderKey, int index) async {
     await RemindersService.deleteReminder(reminderKey);
 
@@ -44,6 +48,7 @@ class RemindersPageState extends State<RemindersPage> {
     });
   }
 
+  /// Return the date string in a more human readable format.
   getHumanReadableDate(String date) {
     DateTime reminderDate = DateTime.parse(date);
     String formattedDate = DateFormat('yMMMMd').format(reminderDate);
@@ -51,6 +56,7 @@ class RemindersPageState extends State<RemindersPage> {
     return formattedDate;
   }
 
+  /// Return the time string in a more human readable format.
   getHumanReadableTime(String time) {
     DateTime reminderTime = DateTime.parse(time);
     String formattedTime = DateFormat('jm').format(reminderTime);
