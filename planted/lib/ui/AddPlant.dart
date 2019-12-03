@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:io';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:path/path.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:toast/toast.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:async';
-import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'package:toast/toast.dart';
 
 class AddPlantPage extends StatefulWidget {
   _AddPlantPageState createState() => _AddPlantPageState();
@@ -19,7 +20,6 @@ class _AddPlantPageState extends State<AddPlantPage> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final DatabaseReference databaseReference =
       FirebaseDatabase.instance.reference();
-
   final nameController = new TextEditingController();
   final lightRequirementController = new TextEditingController();
   final genusController = new TextEditingController();
@@ -43,6 +43,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
       });
     }
 
+    /// Saves a newly added plant to the Firebase database.
     Future saveToDatabase(BuildContext context) async {
       final currentUser = await _firebaseAuth.currentUser();
 
@@ -66,10 +67,12 @@ class _AddPlantPageState extends State<AddPlantPage> {
           'lightRequirement': lightRequirementController.text,
           'imageUrl': filename
         });
-        // Clear all field values after form was submitted
+
+        /// Clear all field values after form was submitted.
         nameController.clear();
         genusController.clear();
         lightRequirementController.clear();
+
         setState(() {
           plantImage = null;
         });

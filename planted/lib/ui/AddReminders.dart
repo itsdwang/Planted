@@ -1,19 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'dart:math';
+
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:planted/models/Plant.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'dart:math';
+import 'package:intl/intl.dart';
+import 'package:planted/models/Plant.dart';
 import 'package:planted/models/Reminder.dart';
 import 'package:planted/services/RemindersService.dart';
-import 'package:flutter/services.dart';
+
 import './PlantsPage.dart';
 
 class AddRemindersPage extends StatefulWidget {
   final Plant plant;
-
   const AddRemindersPage({Key key, this.plant}) : super(key: key);
 
   _AddRemindersPageState createState() => _AddRemindersPageState();
@@ -54,6 +55,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
         context, MaterialPageRoute(builder: (context) => PlantsPage()));
   }
 
+  /// Schedules a notification based on date and time.
   Future<void> scheduleNotification(scheduledReminder, reminderID) async {
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your other channel id',
@@ -75,6 +77,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     await flutterLocalNotificationsPlugin.cancel(reminderID);
   }
 
+  /// Returns all reminders corresponding to a particular plant.
   _getRemindersForPlant(plantKey) async {
     List<Reminder> allReminders = await RemindersService.getReminders();
     List<Reminder> filterReminders = [];
@@ -94,6 +97,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     });
   }
 
+  /// Adds reminder object to the Firebase database.
   submitReminderForm() async {
     if (_addReminderKey.currentState.validate()) {
       _addReminderKey.currentState.save();
@@ -119,17 +123,19 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
 
     Navigator.of(context, rootNavigator: true).pop('dialog');
 
-    // Reset form field values
+    /// Reset form field values.
     reminderNameController.clear();
     _getRemindersForPlant(widget.plant.key);
   }
 
+  /// Return the reminder date and time in one string.
   getDateTimeReminder(String reminderDate, String reminderTime) {
     return DateTime.parse(reminderDate.toString().substring(0, 10) +
         " " +
         reminderTime.toString().substring(11, 19));
   }
 
+  /// Return the date string in a more human readable format.
   getHumanReadableDate(String date) {
     DateTime reminderDate = DateTime.parse(date);
     String formattedDate = DateFormat('yMMMMd').format(reminderDate);
@@ -137,6 +143,7 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
     return formattedDate;
   }
 
+  /// Return the time string in a more human readable format.
   getHumanReadableTime(String time) {
     DateTime reminderTime = DateTime.parse(time);
     String formattedTime = DateFormat('jm').format(reminderTime);
@@ -249,8 +256,8 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                         scheduleNotification(scheduledReminder,
                             currentReminders[index].reminderID);
                       } else {
+                        /// Turn off reminder.
                         cancelReminder(currentReminders[index].reminderID);
-                        // turn off reminder
                       }
                     },
                     title: new Text(getHumanReadableDate(

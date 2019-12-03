@@ -1,0 +1,21 @@
+Planted!
+
+Reminder Creation Unit Test Report by Eduardo Villa
+
+Test 1: Inputing a date that's past the current date in the Reminders Form for a plant
+
+1) User picks a plant to add reminder
+2) Enter a date that's prior to the current date into the form
+3) Fill in the other fields of the form
+4) Notification doesn't appear in the 'Reminders for [plant name]' and isn't scheduled in reminders
+
+Result 1: FAIL
+
+Test 2: Inputing a time that's past the current time in the Reminders Form for a plant
+
+1) User picks a plant to add reminder
+2) Enter a time that's prior to the current time into the form
+3) Fill in the other fields of the form
+4) Notification doesn't appear in the 'Reminders for [plant name]' and isn't scheduled in reminders
+
+Result 2: FAIL
