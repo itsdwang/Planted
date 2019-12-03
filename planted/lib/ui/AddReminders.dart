@@ -8,6 +8,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'dart:math';
 import 'package:planted/models/Reminder.dart';
 import 'package:planted/services/RemindersService.dart';
+import 'package:flutter/services.dart';
 import './PlantsPage.dart';
 
 class AddRemindersPage extends StatefulWidget {
@@ -165,7 +166,10 @@ class _AddRemindersPageState extends State<AddRemindersPage> {
                           }
 
                           return null;
-                        }),
+                        },
+                        inputFormatters: [
+                          new LengthLimitingTextInputFormatter(18),
+                        ]),
                     DateTimePickerFormField(
                         inputType: InputType.date,
                         format: DateFormat("EEEE, MM/dd/yyyy"),
