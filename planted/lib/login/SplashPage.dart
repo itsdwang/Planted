@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
-// Reference: https://medium.com/@vignesh_prakash/flutter-splash-screen-84fb0307ac55
+import 'package:flutter/material.dart';
+
+/// Reference to creating splash screen: https://medium.com/@vignesh_prakash/flutter-splash-screen-84fb0307ac55
 class SplashPage extends StatefulWidget {
   @override
   _SplashPageState createState() => new _SplashPageState();
@@ -9,10 +10,11 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   startTime() async {
-    var _duration = new Duration(seconds: 5);
+    var _duration = new Duration(seconds: 3);
     return new Timer(_duration, navigationPage);
   }
 
+  /// navigationPage() redirects the user to the login page after 3 seconds.
   void navigationPage() {
     Navigator.of(context).pushReplacementNamed('/LoginPage');
   }
