@@ -1,4 +1,9 @@
 #### Planted!
+#### Release 1.0 
+#### **Team Name: Planted**
+#### **Date Revised: December 2, 2019**
+
+------
 
 # Add Plant System Unit Test Report 
 by Alyssa Melton
@@ -37,8 +42,7 @@ Test 2: Change image after adding an initial one while using 'Add Plant' functio
      below the entry boxes.
 
   Result 3: FAIL
-  - error messages appear
-  - box disappears.
+  - error messages appear briefly, but the box disappears so they can't be read.
 
 --------------------------------------------------------------------------------
 
